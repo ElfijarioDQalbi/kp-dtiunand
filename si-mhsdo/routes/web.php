@@ -14,5 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('layouts/master');
+    return view('welcome');
+});
+Route::get('/datamahasiswa', function () {
+    return view('admin/mahasiswa');
+});
+Route::get('/beranda', function () {
+    return view('admin/beranda');
+});
+Route::get('/laporan', function () {
+    return view('admin/laporan');
 });
