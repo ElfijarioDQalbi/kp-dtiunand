@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/datamahasiswa', function () {
+Route::get('/mahasiswa', function () {
     return view('admin/mahasiswa');
 });
 Route::get('/beranda', function () {
@@ -25,3 +25,10 @@ Route::get('/beranda', function () {
 Route::get('/laporan', function () {
     return view('admin/laporan');
 });
+Route::get('/akun', function () {
+    return view('admin/akun');
+});
+Route::get('/tambah', function () {
+    return view('admin/tambahmahasiswa');
+});
+

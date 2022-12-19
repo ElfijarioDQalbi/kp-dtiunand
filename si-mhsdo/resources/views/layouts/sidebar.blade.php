@@ -13,10 +13,10 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-header">ANALISIS</li>
-          <li class="nav-item">
-            <a href="/datamahasiswa" class="nav-link">
-              <i class="nav-icon fas fa-user-graduate"></i>
+          <li class="nav-header">PENDATAAN</li>
+          <li class="nav-item menu">
+            <a href="/mahasiswa" class="nav-link">
+              <i class="nav-icon fas fa-graduation-cap"></i>
               <p>
                 Mahasiswa
               </p>
@@ -30,8 +30,17 @@
               </p>
             </a>
           </li>
+          <li class="nav-header">ADMIN</li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="/akun" class="nav-link">
+              <i class="nav-icon fas fa-user-circle"></i>
+              <p>
+                Akun
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/" class="nav-link">
               <i class="nav-icon fas fa-power-off"></i>
               <p>
                 Log Out
