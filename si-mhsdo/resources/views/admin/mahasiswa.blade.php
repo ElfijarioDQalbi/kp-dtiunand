@@ -25,7 +25,7 @@
   
     <!-- /.card-header -->
     <div class="card bg-light mb-3">
-      <div class="card-header">Data Mahasiswa</div>
+      <div class="card-header bg-primary">Data Mahasiswa</div>
       <div class="card-body">
         <button type="button" class="btn btn-outline-info">
           <i class="nav-icon fas fa-folder-open"></i> <a></a> Import Excel
@@ -49,8 +49,8 @@
                 <th scope="col">Program Studi</th>
                 <th scope="col">Fakultas</th>
                 <th scope="col">Angkatan</th>
-                <th scope="col">Nomor HP Mahasiswa</th>
-                <th scope="col">Nomor Hp Orang Tua</th>
+                <th scope="col">No.HP Mahasiswa</th>
+                <th scope="col">No.Hp Orang Tua</th>
                 <th scope="col">IPK</th>
                 <th scope="col">Total SKS</th>
                 <th scope="col">Semester</th>

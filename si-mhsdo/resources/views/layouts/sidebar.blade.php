@@ -1,3 +1,5 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
@@ -27,6 +29,14 @@
               <i class="nav-icon fas fa-file-alt"></i>
               <p>
                 Laporan
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/pesan" class="nav-link">
+              <i class="nav-icon fas fa-bullhorn"></i>
+              <p>
+                Pesan
               </p>
             </a>
           </li>
