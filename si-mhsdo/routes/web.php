@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormController;
+use App\Http\Controllers\EmailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,3 +43,6 @@ Route::get('/createadmin', function () {
 
 Route::get('/pesan', [FormController::class, 'index']);
 Route::post('/pesan', [FormController::class, 'store']);
+
+Route::get('/email', [EmailController::class , 'create']);
+Route::post('/email', [EmailController::class , 'sendEmail'])->name('send.email');
