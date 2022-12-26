@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FormController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,3 +39,6 @@ Route::get('/createadmin', function () {
     return view('admin/tambahadmin');
 });
 
+
+Route::get('/pesan', [FormController::class, 'index']);
+Route::post('/pesan', [FormController::class, 'store']);
