@@ -133,9 +133,6 @@
             </tbody>
           </table>
         </div>
-        <button type="button" class="btn btn-outline-warning"><i class="nav-icon fas fa-mail-bulk "></i> <a></a>Kirim Email</button>
-        <button type="button" class="btn btn-outline-warning"><i class="nav-icon fab fa-whatsapp "></i> <a></a>Kirim Pesan</button>
-      </div>
     </div>
   <!-- /.card-body -->
   </section>

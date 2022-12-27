@@ -39,6 +39,9 @@ Route::get('/createmahasiswa', function () {
 Route::get('/createadmin', function () {
     return view('admin/tambahadmin');
 });
+Route::get('/kirimpesan', function () {
+    return view('admin/kirimpesan');
+});
 
 
 Route::get('/pesan', [FormController::class, 'index']);

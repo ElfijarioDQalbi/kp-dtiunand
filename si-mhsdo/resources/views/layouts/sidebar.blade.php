@@ -32,13 +32,55 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="/pesan" class="nav-link">
+          {{-- <li class="nav-item">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-bullhorn"></i>
               <p>
                 Pesan
+                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/kirimpesan" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Kirim Pesan</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/riwayatpesan" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Riwayat Pesan</p>
+                </a>
+              </li>
+            </ul>
+          </li> --}}
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-bullhorn"></i>
+              <p>
+                Pesan
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item col-sm-4" >
+                <a href="/pesan" class="nav-link">
+                  <i class="nav-icon fab fa-whatsapp"></i>
+                  <p>
+                    WhatsApp
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item col-sm-4">
+                <a href="/email" class="nav-link">
+                  <i class="nav-icon fas fa-mail-bulk"></i>
+                  <p>
+                    Email
+                  </p>
+                </a>
+              </li>
+            </ul>
           </li>
           <li class="nav-header">ADMIN</li>
           <li class="nav-item">
