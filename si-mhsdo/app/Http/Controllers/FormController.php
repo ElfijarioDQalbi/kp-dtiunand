@@ -35,6 +35,6 @@ class FormController extends Controller
         }
         WablasTrait::sendText($kumpulan_data);
         
-        return redirect()->back()->with(['message' => 'Email successfully sent!']);
+        return redirect()->back()->with(['message' => 'Pesan Whatsapp Berhasil dikirim!']);
     }
 }
