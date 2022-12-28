@@ -10,12 +10,12 @@
         <div class="col-sm-6">
           <h1>Laporan</h1>
         </div>
-        <div class="col-sm-6">
+        {{-- <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
             <li class="breadcrumb-item active">Blank Page</li>
           </ol>
-        </div>
+        </div> --}}
       </div>
     </div><!-- /.container-fluid -->
   </section>
@@ -30,20 +30,8 @@
       <label for="exampleFormControlSelect1">Semester</label>
       <select class="form-control" id="exampleFormControlSelect1">
         <option selected>--Semester terakhir--</option>
-        <option>1</option>
-        <option>2</option>
         <option>3</option>
-        <option>4</option>
-        <option>5</option>
-        <option>6</option>
-        <option>7</option>
-        <option>8</option>
-        <option>9</option>
-        <option>10</option>
-        <option>11</option>
-        <option>12</option>
         <option>13</option>
-        <option>14</option>
       </select>
     </div>
     <div class="form-group">
@@ -73,66 +61,53 @@
           <table class="table table-bordered">
             <thead>
               <tr>
-                <th scope="col">No</th>
-                <th scope="col">Nama Mahasiswa</th>
-                <th scope="col">NIM</th>
-                <th scope="col">Program Studi</th>
-                <th scope="col">Fakultas</th>
-                <th scope="col">Angkatan</th>
-                <th scope="col">No.HP Mahasiswa</th>
-                <th scope="col">No.Hp Orang Tua</th>
-                <th scope="col">IPK</th>
-                <th scope="col">Total SKS</th>
-                <th scope="col">Semester</th>
-                <th scope="col">Action</th>
+                <th scope="col" class="text-center">No</th>
+                <th scope="col" class="text-center">Nama Mahasiswa</th>
+                <th scope="col" class="text-center">NIM</th>
+                <th scope="col" class="text-center">Angkatan</th>
+                <th scope="col" class="text-center">Program Studi</th>
+                <th scope="col" class="text-center">Fakultas</th>
+                <th scope="col" class="text-center">Semester</th>
+                <th scope="col" class="text-center">IPK</th>
+                <th scope="col" class="text-center">Total SKS</th>
+                <th scope="col" class="text-center">Masa Studi</th>
+                <th scope="col" class="text-center">No.HP OrangTua/Wali</th>
+                <th scope="col" class="text-center">No.HP Mahasiswa</th>
+                <th scope="col" class="text-center">Email Mahasiswa</th>
+                <th scope="col" class="text-center">Status</th>
+                <th scope="col" class="text-center">Evaluasi</th>
+                <th scope="col" class="text-center">Action</th>
               </tr>
             </thead>
             <tbody>
+              {{-- <div {{ $i = 1 }}> </div>
+              @foreach ($mahasiswa as $mhs)
               <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
-                <td>Otto</td>
-                <td>Otto</td>
-                <td>Otto</td>
-                <td>Otto</td>
-                <td>Otto</td>
-                <td>Otto</td>
+                <td class="text-center">{{ $i++}}</td>
+                <td><p>{{ $mhs->nama }}</p></td>
+                <td><p>{{ $mhs->nim }}</p></td>
+                <td><p>{{ $mhs->angkatan }}</p></td>
+                <td><p>{{ $mhs->prodi }}</p></td>
+                <td><p>{{ $mhs->fakultas }}</p></td>
+                <td><p>{{ $mhs->semester }}</p></td>
+                <td><p>{{ $mhs->ipk }}</p></td>
+                <td><p>{{ $mhs->total_sks }}</p></td>
+                <td><p>{{ $mhs->masa_studi}}</p></td>
+                <td><p>{{ $mhs->hp_ortu }}</p></td>
+                <td><p>{{ $mhs->hp_mahasiswa }}</p></td>
+                <td><p>{{ $mhs->email }}</p></td>
+                <td><p>{{ $mhs->status }}</p></td>
+                <td><p>{{ $mhs->evaluasi }}</p></td>
                 <td>
                   <button type="button" class="btn btn-outline-warning btn-xs"><i class="nav-icon fas fa-edit"></i></button>
                   <button type="button" class="btn btn-outline-danger btn-xs"><i class="av-icon fas fa-trash "></i></button>
                 </td>
               </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                <td>@mdo</td>
-                <td>Otto</td>
-                <td>Otto</td>
-                <td>Otto</td>
-                <td>Otto</td>
-                <td>Otto</td>
-                <td>Otto</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-                <td>@mdo</td>
-                <td>Otto</td>
-                <td>Otto</td>
-                <td>Otto</td>
-                <td>Otto</td>
-                <td>Otto</td>
-                <td>Otto</td>
-              </tr>
+              @endforeach --}}
             </tbody>
           </table>
         </div>
+        <!--/table-->
     </div>
   <!-- /.card-body -->
   </section>

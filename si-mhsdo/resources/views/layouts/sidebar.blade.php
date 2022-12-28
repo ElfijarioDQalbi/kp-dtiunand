@@ -15,7 +15,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-header">PENDATAAN</li>
+          <li class="nav-header">KELOLA</li>
           <li class="nav-item menu">
             <a href="/mahasiswa" class="nav-link">
               <i class="nav-icon fas fa-graduation-cap"></i>

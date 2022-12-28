@@ -13,6 +13,7 @@ class FormController extends Controller
     public function __construct(){
         $this->Mahasiswa = new Mahasiswa();
     }
+    
     public function index()
     {
         $data =[

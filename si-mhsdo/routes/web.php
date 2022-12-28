@@ -30,17 +30,14 @@ Route::get('/laporan', function () {
 Route::get('/akun', function () {
     return view('admin/akun');
 });
-Route::get('/pesan', function () {
-    return view('admin/pesan');
-});
+// Route::get('/pesan', function () {
+//     return view('admin/pesan');
+// });
 Route::get('/createmahasiswa', function () {
     return view('admin/tambahmahasiswa');
 });
 Route::get('/createadmin', function () {
     return view('admin/tambahadmin');
-});
-Route::get('/kirimpesan', function () {
-    return view('admin/kirimpesan');
 });
 
 
