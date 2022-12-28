@@ -35,16 +35,16 @@
 						<div class="col-sm-6">
 							<div class="form-group">
 								<label for="inputName">Name</label>
-                                @foreach ($mahasiswa as $data)
-                                  <p>{{ $data->nama }}</p>
+                                @foreach ($data as $mahasiswa)
+                                  <p>{{ $mahasiswa->nama }}</p>
                               @endforeach
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
 								<label for="inputEmail">Email</label>
-                                @foreach ($mahasiswa as $data)
-                                <p>{{ $data->email }}</p>
+                                @foreach ($data as $mahasiswa)
+                                <p>{{ $mahasiswa->email }}</p>
                             @endforeach
 							</div>
 						</div>

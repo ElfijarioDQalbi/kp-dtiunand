@@ -11,13 +11,12 @@ use App\Models\Mahasiswa;
 class FormController extends Controller
 {
     public function __construct(){
-        $this->Mahasiswa = new Mahasiswa();
+        //$this->Mahasiswa = new Mahasiswa();
     }
     public function index()
     {
-        $data =[
-            'mahasiswa' => $this->Mahasiswa->allData(),];
-        return view('/admin/pesan', $data);
+        $data = mahasiswa::all();
+        return view('/admin/pesan', compact('data'));
     }
     
     public function store()

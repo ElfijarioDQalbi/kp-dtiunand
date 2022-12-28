@@ -12,14 +12,13 @@ use Illuminate\Support\Facades\DB;
 class EmailController extends Controller
 {
     public function __construct(){
-        $this->Mahasiswa = new Mahasiswa();
+        //$this->Mahasiswa = new Mahasiswa();
     }
 
     public function create()
     {
-      $data =[
-        'mahasiswa' => $this->Mahasiswa->allData(),];
-        return view('/admin/email', $data);
+      $data =mahasiswa::all();
+        return view('/admin/email', compact('data'));
     }
     
     public function sendEmail(Request $request)

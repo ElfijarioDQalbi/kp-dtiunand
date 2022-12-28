@@ -36,8 +36,8 @@
                           <div class="col-sm-6">
                         <div class="form-group">
                             <label for="\">No WA</label> 
-                              @foreach ($mahasiswa as $data)
-                                  <p>{{ $data->hp_mahasiswa }}</p>
+                              @foreach ($data as $mahasiswa)
+                                  <p>{{ $mahasiswa->hp_mahasiswa }}</p>
                               @endforeach
                         </div>
                       </div>
@@ -45,8 +45,8 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                           <label for="\">Nama Mahasiswa</label>
-                            @foreach ($mahasiswa as $data)
-                                <p>{{ $data->nama }}</p>
+                            @foreach ($data as $mahasiswa)
+                                <p>{{ $mahasiswa->nama }}</p>
                             @endforeach
                           </div>
                       </div>

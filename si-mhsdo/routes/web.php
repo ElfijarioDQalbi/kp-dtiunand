@@ -51,5 +51,6 @@ Route::get('/email', [EmailController::class , 'create']);
 Route::post('/email', [EmailController::class , 'sendEmail'])->name('send.email');
 
 Route::get('data', [ExportController::class, 'Index']);
+Route::get('cek', [ExportController::class, 'Index']);
 
 Route::get('/exportexcel', [ExportController::class , 'exportexcel'])->name('exportexcel');

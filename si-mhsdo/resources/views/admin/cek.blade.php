@@ -37,33 +37,11 @@
           <i class="nav-icon fas fa-plus-circle"></i> <a></a> Export Data
         </button>
         <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+{{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Import Data
-</button>
+</button> --}}
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <form action="" method="post" enctype="multipart/form-data">
-      <div class="modal-body">
-          @csrf
-          <div class="form group">
-            <input type="file" name="file" required>
-          </div>
-        </div>
-      </form>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
+<!-- Modal --
           <ol class="float-sm-right">
             <button type="button" class="btn btn-outline-success">
               <i class="nav-icon fas fa-save"></i> <a></a> Simpan</button>
@@ -139,12 +117,15 @@
         </div>
         
       </div>
+      <form action="" method="post" enctype="multipart/form-data">
+        
     </div>
   <!-- /.card-body -->
 
 
   </section>
   <!-- /.content -->
+  <input type="file ">
 </div>
 <!-- /.content-wrapper -->
 
