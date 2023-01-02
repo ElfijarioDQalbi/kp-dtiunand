@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\ExportController;
+use App\Http\Controllers\ImportController;
 use App\Http\Controllers\UsersController;
 
 /*
@@ -47,10 +48,15 @@ Route::get('/createadmin', function () {
 Route::get('/pesan', [FormController::class, 'index']);
 Route::post('/pesan', [FormController::class, 'store']);
 
-Route::get('/email', [EmailController::class , 'create']);
-Route::post('/email', [EmailController::class , 'sendEmail'])->name('send.email');
+Route::get('/email', [EmailController::class, 'create']);
+Route::post('/email', [EmailController::class, 'sendEmail'])->name('send.email');
 
-Route::get('data', [ExportController::class, 'Index']);
-Route::get('cek', [ExportController::class, 'Index']);
+Route::get('/data', [ExportController::class, 'Index']);
+Route::get('/cek', [ExportController::class, 'Index']);
 
-Route::get('/exportexcel', [ExportController::class , 'exportexcel'])->name('exportexcel');
+
+Route::get('/import', [ImportController::class, 'Index']);
+
+Route::get('/exportexcel', [ExportController::class, 'exportexcel'])->name('exportexcel');
+
+Route::post('/importexcel', [ImportController::class, 'importexcel'])->name('importexcel');
