@@ -27,19 +27,12 @@
         <div class="card bg-light mb-3">
           <div class="card-header bg-primary">Data Mahasiswa</div>
           <div class="card-body">
-            <button type="button" class="btn btn-outline-info" href="{{ URL:: }}">
-              <i class="nav-icon fas fa-folder-open"></i> <a></a> Import Excel
-            </button>
-            <button type="button" class="btn btn-outline-info" href="mahasiswa/tambah">
-              <i class="nav-icon fas fa-plus-circle"></i> <a></a> Tambah Data
-            </button>
-            <button type="button" class="btn btn-outline-info" href="{{  }}">
+            <a href="/import" class="btn btn-outline-info"><i class="nav-icon fas fa-folder-open"></i>Import Data</a>
+              <a href="/createmahasiswa" class="btn btn-outline-info"><i class="nav-icon fas fa-plus-circle"></i> Tambah Data</a> 
+            
+            <button type="button" class="btn btn-outline-info" href="">
               <i class="nav-icon fas fa-plus-circle"></i> <a></a> Export Data
             </button>
-            <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-      Import Data
-    </button>
     
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

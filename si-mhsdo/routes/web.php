@@ -5,6 +5,7 @@ use App\Http\Controllers\FormController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\ExportController;
 use App\Http\Controllers\ImportController;
+use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\UsersController;
 
 /*
@@ -36,13 +37,14 @@ Route::get('/akun', function () {
 Route::get('/pesan', function () {
     return view('admin/pesan');
 });
-Route::get('/createmahasiswa', function () {
-    return view('admin/tambahmahasiswa');
-});
+
 Route::get('/createadmin', function () {
     return view('admin/tambahadmin');
 });
 
+
+Route::get('/createmahasiswa', [MahasiswaController::class, 'tampilcreate']);
+Route::Post('/insertmahasiswa', [MahasiswaController::class, 'insertmahasiswa'])->name('insertmahasiswa');
 
 
 Route::get('/pesan', [FormController::class, 'index']);
