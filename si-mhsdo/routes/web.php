@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApiwablasController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\EmailController;
@@ -62,3 +63,5 @@ Route::get('/import', [ImportController::class, 'Index']);
 Route::get('/exportexcel', [ExportController::class, 'exportexcel'])->name('exportexcel');
 
 Route::post('/importexcel', [ImportController::class, 'importexcel'])->name('importexcel');
+
+Route::get('/api', [ApiwablasController::class, 'index']);
