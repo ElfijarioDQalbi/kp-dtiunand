@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\mahasiswa;
 use Illuminate\Http\Request;
 use App\Exports\MahasiswaExport;
+use App\Exports\MahasiswaExportFakultas;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ExportController extends Controller
@@ -18,5 +19,17 @@ class ExportController extends Controller
     public function exportexcel()
     {
         return Excel::download(new MahasiswaExport, "mahasiswa DO.xlsx");
+    }
+
+    public function exportExcelFakultas(Request $request)
+    {
+
+        $request->validate([
+            'angkatan' => 'required',
+            'fakultas' => 'required',
+        ]);
+        //$namafile = "Fakultas " + $request['fakultas'] + ".xlsx";
+        //dd($request['angkatan']);
+        return Excel::download(new MahasiswaExportFakultas($request['angkatan'], $request['fakultas'], "mahasiswa DO.xlsx"));
     }
 }

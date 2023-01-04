@@ -65,3 +65,7 @@ Route::get('/exportexcel', [ExportController::class, 'exportexcel'])->name('expo
 Route::post('/importexcel', [ImportController::class, 'importexcel'])->name('importexcel');
 
 Route::get('/api', [ApiwablasController::class, 'index']);
+
+Route::post('/xxxx', [MahasiswaController::class, 'exportExcelFakultas'])->name('exportExcelFakultas');
+
+Route::post('/waka', [MahasiswaController::class, 'exportExcelFakultas'])->name('exportExcelFakultas');

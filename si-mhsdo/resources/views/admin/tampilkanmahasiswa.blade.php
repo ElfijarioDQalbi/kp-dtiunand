@@ -8,7 +8,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Laporan</h1>
+          <h1>Mahasiswa</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -22,36 +22,24 @@
 
   <!-- Main content -->
   <section class="content">
-    <form  action="/xxxx" action="/waka" method="post" enctype="multipart/form-data">
-      @csrf
-      <div class="form-group">
-        <label for="exampleInputEmail1">Tahun Angkatan</label>
-        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan tahun angkatan" name="angkatan">
-      </div>
-      <div class="form-group">
-        <label for="exampleFormControlSelect1">Fakultas</label>
-        <select class="form-control" id="exampleFormControlSelect1" name="fakultas">
-          <option selected>--Fakultas--</option>
-          <option>teknologi informasi</option>
-          <option>teknik</option>
-          <option>fmipa</option>
-        </select>
-      </div>
-      <button type="submit" class="btn btn-outline-info">
-        <i class="nav-icon fas fa-eye"></i> <a></a> Tampilkan
-      </button>
-    </form>
-    
 
-    <p></p>
     <!-- /.card-header -->
     <div class="card bg-light mb-3">
-      <div class="card-header bg-primary">Data Mahasiswa Angkatan .... Semester ....</div>
+      <div class="card-header bg-primary">Data Mahasiswa</div>
       <div class="card-body">
-          <ol class="float-sm-right">
-            <button type="button" class="btn btn-outline-success">
-              <i class="nav-icon fas fa-print"></i> <a></a> Cetak</button>
-          </ol>
+        <button type="button" class="btn btn-outline-info">
+          <i class="nav-icon fas fa-folder-open"></i> <a></a> Import Excel
+        </button>
+        <button type="button" class="btn btn-outline-info" href="mahasiswa/tambah">
+          <i class="nav-icon fas fa-plus-circle"></i> <a></a> Tambah Data
+        </button>
+        <button type="button" class="btn btn-outline-info" >
+          <i class="nav-icon fas fa-plus-circle"></i> <a href='/waka'>Export Data</a>
+        </button>
+        <ol class="float-sm-right">
+          <button type="button" class="btn btn-outline-success">
+            <i class="nav-icon fas fa-save"></i> <a></a> Simpan</button>
+        </ol>
         <p></p>
         <!--table-->
         <div class="table-responsive">
@@ -74,21 +62,23 @@
             </thead>
             <tbody>
               <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
-                <td>Otto</td>
-                <td>Otto</td>
-                <td>Otto</td>
-                <td>Otto</td>
-                <td>Otto</td>
-                <td>Otto</td>
-                <td>
-                  <button type="button" class="btn btn-outline-warning btn-xs"><i class="nav-icon fas fa-edit"></i></button>
-                  <button type="button" class="btn btn-outline-danger btn-xs"><i class="av-icon fas fa-trash "></i></button>
-                </td>
+                @foreach ($data as $item)
+                    <td>{{ $item->id }}</td>  
+                      <td>{{ $item->nama }}</td>  
+                      <td>{{ $item->nim }}</td>  
+                      <td>{{ $item->prodi }}</td>  
+                      <td>{{ $item->fakultas }}</td>  
+                      <td>{{ $item->angkatan }}</td>  
+                      <td>{{ $item->hp_mahasiswa }}</td>  
+                      <td>{{ $item->hp_ortu }}</td>  
+                      <td>{{ $item->ipk }}</td>  
+                      <td>{{ $item->total_sks }}</td>  
+                      <td>{{ $item->semester }}</td>  
+                      <td>
+                        <button type="button" class="btn btn-outline-warning btn-xs"><i class="nav-icon fas fa-edit"></i></button>
+                        <button type="button" class="btn btn-outline-danger btn-xs"><i class="av-icon fas fa-trash "></i></button>
+                      </td>  
+                @endforeach
               </tr>
               <tr>
                 <th scope="row">2</th>
@@ -118,13 +108,16 @@
             </tbody>
           </table>
         </div>
-        <button type="button" class="btn btn-outline-warning"><i class="nav-icon fas fa-mail-bulk "></i> <a></a>Kirim Email</button>
-        <button type="button" class="btn btn-outline-warning"><i class="nav-icon fab fa-whatsapp "></i> <a></a>Kirim Pesan</button>
+
       </div>
     </div>
-  <!-- /.card-body -->
+    <!-- /.card-body -->
+
+
   </section>
   <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+
+
 @endsection
