@@ -10,56 +10,44 @@
         <div class="col-sm-6">
           <h1>Mahasiswa</h1>
         </div>
-        {{-- <div class="col-sm-6">
-          <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Blank Page</li>
-          </ol>
-        </div> --}}
       </div>
-    </div><!-- /.container-fluid -->
+    </div>
   </section>
 
   <!-- Main content -->
   <section class="content">
-  
-    <!-- /.card-header -->
-    <div class="card bg-light mb-3">
+    @if ($message = Session::get('success-i'))
+    <div class="alert alert-success" role="alert">
+        {{ $message }}
+    </div>
+    @elseif ($message = Session::get('success-e'))
+    <div class="alert alert-warning" role="alert">
+      {{ $message }}
+    </div>
+    @elseif ($message = Session::get('success-d'))
+    <div class="alert alert-danger" role="alert">
+      {{ $message }}
+    </div>
+    @endif
+
+    <!--.card-header -->
+    <div class="card bg-white mb-3">
       <div class="card-header bg-primary">Data Mahasiswa</div>
       <div class="card-body">
-        {{-- <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="staticBackdrop">
-          <i class="nav-icon fas fa-folder-open"></i> <a></a>Import Excel
-        </button>
+        <a class="btn btn-outline-primary" href="{{ route('createmhs') }}">
+          <i class="nav-icon fas fa-plus-circle"></i> Add Data </a>
+        
+        <!-- Button import modal -->
+        <a type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModal">
+          <i class="nav-icon fas fa-folder-open"></i> Import Excel
+        </a>
 
-        <!-- Modal -->
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                ...
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Understood</button>
-              </div>
-            </div>
-          </div>
-        </div> --}}
-        <button type="button" class="btn btn-outline-info">
-          <i class="nav-icon fas fa-folder-open"></i> <a></a> Import Excel
-        </button>
-        <button type="button" class="btn btn-outline-info" href="mahasiswa/tambah">
-          <i class="nav-icon fas fa-plus-circle"></i> <a></a> Tambah Data
-        </button>
-          <ol class="float-sm-right">
-            <button type="button" class="btn btn-outline-success">
-              <i class="nav-icon fas fa-save"></i> <a></a> Simpan</button>
-          </ol>
+       
+        <ol class="float-sm-right">
+          <a class="btn btn-outline-success" href="{{ route('exportmhs') }}">
+            <i class="nav-icon fas fa-print"></i> Export Data </a>
+        </ol>
+  
         <p></p>
         <!--table-->
         <div class="table-responsive">
@@ -73,55 +61,82 @@
                 <th scope="col" class="text-center">Program Studi</th>
                 <th scope="col" class="text-center">Fakultas</th>
                 <th scope="col" class="text-center">Semester</th>
-                <th scope="col" class="text-center">IPK</th>
+                {{-- <th scope="col" class="text-center">IPK</th>
                 <th scope="col" class="text-center">Total SKS</th>
                 <th scope="col" class="text-center">Masa Studi</th>
                 <th scope="col" class="text-center">No.HP OrangTua/Wali</th>
                 <th scope="col" class="text-center">No.HP Mahasiswa</th>
                 <th scope="col" class="text-center">Email Mahasiswa</th>
                 <th scope="col" class="text-center">Status</th>
-                <th scope="col" class="text-center">Evaluasi</th>
+                <th scope="col" class="text-center">Evaluasi</th> --}}
                 <th scope="col" class="text-center">Action</th>
               </tr>
             </thead>
             <tbody>
-              {{-- <div {{ $i = 1 }}> </div>
-              @foreach ($mahasiswa as $mhs)
+              {{-- <div {{ $i = 1 }}> </div> --}}
+              @foreach ($mhs as $index => $mhsiswa)
               <tr>
-                <td class="text-center">{{ $i++}}</td>
-                <td><p>{{ $mhs->nama }}</p></td>
-                <td><p>{{ $mhs->nim }}</p></td>
-                <td><p>{{ $mhs->angkatan }}</p></td>
-                <td><p>{{ $mhs->prodi }}</p></td>
-                <td><p>{{ $mhs->fakultas }}</p></td>
-                <td><p>{{ $mhs->semester }}</p></td>
-                <td><p>{{ $mhs->ipk }}</p></td>
-                <td><p>{{ $mhs->total_sks }}</p></td>
-                <td><p>{{ $mhs->masa_studi}}</p></td>
-                <td><p>{{ $mhs->hp_ortu }}</p></td>
-                <td><p>{{ $mhs->hp_mahasiswa }}</p></td>
-                <td><p>{{ $mhs->email }}</p></td>
-                <td><p>{{ $mhs->status }}</p></td>
-                <td><p>{{ $mhs->evaluasi }}</p></td>
-                <td>
-                  <button type="button" class="btn btn-outline-warning btn-xs"><i class="nav-icon fas fa-edit"></i></button>
-                  <button type="button" class="btn btn-outline-danger btn-xs"><i class="av-icon fas fa-trash "></i></button>
+                <td class="text-center">{{ $index + $mhs->firstItem()}}</td>
+                <td><p>{{ $mhsiswa->nama }}</p></td>
+                <td><p>{{ $mhsiswa->nim }}</p></td>
+                <td><p>{{ $mhsiswa->angkatan }}</p></td>
+                <td><p>{{ $mhsiswa->prodi }}</p></td>
+                <td><p>{{ $mhsiswa->fakultas }}</p></td>
+                <td><p>{{ $mhsiswa->semester }}</p></td>
+                {{-- <td><p>{{ $mhsiswa->ipk }}</p></td>
+                <td><p>{{ $mhsiswa->total_sks }}</p></td>
+                <td><p>{{ $mhsiswa->masa_studi}}</p></td>
+                <td><p>{{ $mhsiswa->hp_ortu }}</p></td>
+                <td><p>{{ $mhsiswa->hp_mahasiswa }}</p></td>
+                <td><p>{{ $mhsiswa->email }}</p></td>
+                <td><p>{{ $mhsiswa->status }}</p></td>
+                <td><p>{{ $mhsiswa->evaluasi }}</p></td> --}}
+                <td class="text-center">
+                  <a href="/detailmhs_{{ $mhsiswa->id }}" class="btn btn-outline-info btn-xs"><i class="nav-icon fas fa-eye"></i></a>
+                  <a href="/editmhs_{{ $mhsiswa->id }}" class="btn btn-outline-warning btn-xs"><i class="nav-icon fas fa-edit"></i></a>
+                  <a href="/deletemhs_{{ $mhsiswa->id }}" class="btn btn-outline-danger btn-xs"><i class="nav-icon fas fa-trash"></i></a>
                 </td>
               </tr>
-              @endforeach --}}
+              @endforeach
             </tbody>
           </table>
+          {{ $mhs->links() }}
         </div>
         
       </div>
     </div>
   <!-- /.card-body -->
 
+  <!-- Modal Import Data -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Import File Excel</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="{{ route('importmhs') }}" method="POST" enctype="multipart/form-data">
+          @csrf
+        
+        <div class="modal-body">
+          <div class="form-group">
+            <input type="file" name="excel_file" required >
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
 
   </section>
   <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
 
-     
 @endsection

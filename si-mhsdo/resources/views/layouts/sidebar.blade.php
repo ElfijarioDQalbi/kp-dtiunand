@@ -3,7 +3,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="/beranda" class="brand-link">
+    <a href="/" class="brand-link">
       <img src="assets/dist/img/LogoUnand.png" alt="Unand Logo" class="brand-image img-circle elevation-3" style="opacity: .9">
       <span class="brand-text font-weight-light">Universitas Andalas</span>
     </a>
@@ -17,44 +17,13 @@
                with font-awesome or any other icon font library -->
           <li class="nav-header">KELOLA</li>
           <li class="nav-item menu">
-            <a href="/mahasiswa" class="nav-link">
+            <a href="{{ route('indexmahasiswa') }}" class="nav-link">
               <i class="nav-icon fas fa-graduation-cap"></i>
               <p>
                 Mahasiswa
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="/laporan" class="nav-link">
-              <i class="nav-icon fas fa-file-alt"></i>
-              <p>
-                Laporan
-              </p>
-            </a>
-          </li>
-          {{-- <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-bullhorn"></i>
-              <p>
-                Pesan
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/kirimpesan" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Kirim Pesan</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/riwayatpesan" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Riwayat Pesan</p>
-                </a>
-              </li>
-            </ul>
-          </li> --}}
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-bullhorn"></i>

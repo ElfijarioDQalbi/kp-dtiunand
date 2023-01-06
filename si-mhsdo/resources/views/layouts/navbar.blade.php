@@ -13,6 +13,12 @@
       </li> --}}
     </ul>
 
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+        <strong style="font-family:verdana">DIREKTORAT TEKNOLOGI INFORMASI</strong>
+    </ul>
+    
+
     {{-- <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Navbar Search -->

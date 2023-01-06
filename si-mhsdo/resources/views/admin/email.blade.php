@@ -21,6 +21,43 @@
 
   <!-- Main content -->
   <section class="content">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Tahun Angkatan</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Masukkan tahun angkatan">
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlSelect1">Semester</label>
+      <select class="form-control" id="exampleFormControlSelect1">
+        <option selected>=== Semester terakhir ===</option>
+        <option>3</option>
+        <option>13</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlSelect1">Fakultas</label>
+      <select class="form-control" id="exampleFormControlSelect1">
+        <option selected>=== Pilih Fakultas ===</option>
+        <option>Pertanian</option>
+        <option>Kedokteran</option>
+        <option>Hukum</option>
+        <option>Matematika dan Ilmu Pengetahuan Alam</option>
+        <option>Ekonomi dan Bisnis</option>
+        <option>Peternakan</option>
+        <option>Ilmu Budaya</option>
+        <option>Ilmu Sosial dan Ilmu Politik</option>
+        <option>Teknik</option>
+        <option>Farmasi</option>
+        <option>Teknologi Pertanian</option>
+        <option>Keperawatan</option>
+        <option>Kesehatan Masyarakat</option>
+        <option>Teknologi Informasi</option>
+        <option>Kedokteran Gigi</option>
+      </select>
+    </div>
+    <button type="button" class="btn btn-outline-secondary">
+      <i class="nav-icon fas fa-eye"></i> <a></a> Tampilkan
+    </button>
+    <p></p>
     <div class="card bg-light mb-3 ">
       <div class="card-header bg-primary">
         Kirim Peringatan ke Mahasiswa via WhatsApp
@@ -41,17 +78,17 @@
                 <th scope="col" class="text-center">No</th>
                 <th scope="col" class="text-center">Nama Mahasiswa</th>
                 <th scope="col" class="text-center">Program Studi</th>
-                <th scope="col" class="text-center">Nomor WhatsApp</th>
+                <th scope="col" class="text-center">Email</th>
               </tr>
             </thead>        
             <tbody>
               <div {{ $i = 1 }}> </div>
-              @foreach ($mahasiswa as $data)
+              @foreach ($mhs as $mhsiswa)
               <tr>
                 <td class="text-center">{{ $i++}}</td>
-                <td><p>{{ $data->nama }}</p></td>
-                <td><p>{{ $data->prodi }}</p></td>
-                <td><p>{{ $data->email}}</p></td>
+                <td><p>{{ $mhsiswa->nama }}</p></td>
+                <td><p>{{ $mhsiswa->prodi }}</p></td>
+                <td><p>{{ $mhsiswa->email}}</p></td>
               </tr>
               @endforeach
             </tbody>     
