@@ -47,7 +47,9 @@ class MahasiswaController extends Controller
         ]);
         //$namafile = "Fakultas " + $request['fakultas'] + ".xlsx";
         //dd($request['angkatan']);
+        $data= new MahasiswaExportFakultas($request['angkatan']);
         
-        return Excel::download(new MahasiswaExportFakultas($request['angkatan']),"mahasiswa DO.xlsx", ExcelExcel::XLSX);
+
+        //return Excel::download(new MahasiswaExportFakultas($request['angkatan']),"mahasiswa DO.xlsx", ExcelExcel::XLSX);
     }
 }

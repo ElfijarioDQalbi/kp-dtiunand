@@ -28,6 +28,6 @@ class MahasiswaExportFakultas implements FromQuery
     
     public function query()
     {
-        return Mahasiswa::query()->where('angkatan', '=', $this->angkatan)->get();
+        //return Mahasiswa::query()->where('angkatan', '=', $this->angkatan);
     }
 }

@@ -22,7 +22,7 @@
 
   <!-- Main content -->
   <section class="content">
-    <form  action="/xxxx" action="/waka" method="post" enctype="multipart/form-data">
+    <form  action="/xxxx" method="get" enctype="multipart/form-data">
       @csrf
       <div class="form-group">
         <label for="exampleInputEmail1">Tahun Angkatan</label>

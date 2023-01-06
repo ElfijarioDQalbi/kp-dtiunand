@@ -50,4 +50,12 @@ class FormController extends Controller
 
         return redirect()->back()->with(['message' => 'Pesan Whatsapp Berhasil dikirim!']);
     }
+    public function riwayatPesan()
+    {
+        return WablasTrait::infoRealtime();
+
+        //return redirect()->back()->with(['message' => 'Pesan Whatsapp Berhasil dikirim!']);
+    }
+
+
 }

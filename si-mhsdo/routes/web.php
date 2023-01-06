@@ -51,6 +51,8 @@ Route::Post('/insertmahasiswa', [MahasiswaController::class, 'insertmahasiswa'])
 Route::get('/pesan', [FormController::class, 'index']);
 Route::post('/pesan', [FormController::class, 'store']);
 
+Route::get('/api2', [FormController::class, 'riwayatPesan'])->name('riwayatPesan');
+
 Route::get('/email', [EmailController::class, 'create']);
 Route::post('/email', [EmailController::class, 'sendEmail'])->name('send.email');
 
@@ -66,6 +68,8 @@ Route::post('/importexcel', [ImportController::class, 'importexcel'])->name('imp
 
 Route::get('/api', [ApiwablasController::class, 'index']);
 
-Route::post('/xxxx', [MahasiswaController::class, 'exportExcelFakultas'])->name('exportExcelFakultas');
+Route::post('/xxxx', [MahasiswaController::class, 'exportExcelFakultas'])->name('exportExcelFakultas'); 
 
-Route::post('/waka', [MahasiswaController::class, 'exportExcelFakultas'])->name('exportExcelFakultas');
+//masih ndak jelas
+
+//Route::post('/waka', [MahasiswaController::class, 'exportExcelFakultas'])->name('exportExcelFakultas');
