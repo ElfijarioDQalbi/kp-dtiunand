@@ -10,11 +10,29 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 
-class MahasiswaExportSelect implements  FromCollection, WithHeadings
+
+class MahasiswaExportSelect implements FromQuery, WithHeadings
 {
-    /**
-    * @return \Illuminate\Support\Collection
-    */
+
+    use Exportable;
+
+
+
+    use Exportable;
+
+    public function __construct($ids)
+    {
+        $this->ids = $ids;
+    }
+
+    public function query()
+    {
+        //$this->ids = implode(',', $this->ids);
+
+        return Mahasiswa::query()->whereIn('id', $this->ids);
+        //var_dump($this->ids);
+    }
+
 
     public function headings(): array
     {
@@ -36,30 +54,11 @@ class MahasiswaExportSelect implements  FromCollection, WithHeadings
             'Evaluasi',
         ];
     }
-
-    public function collection()
-    {
-
-        return Mahasiswa::all();
-    }
-
-    // use Exportable;
-
-    // public function __construct(int $ids)
-    // {
-    //     $this->ids = $ids;
-    // }
-
-    // public function query()
-    // {
-    //     return Mahasiswa::query()->whereids('fakultas', $this->ids);
-    // }
-
-    // public function sheets(): array
-    // {
-    //     $sheets = [];
+    //     public function sheets(): array
+    //     {
+    //         $sheets = [];
 
 
-    //     return $sheets;
-    // }
+    //         return $sheets;
+    //     }
 }
