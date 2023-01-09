@@ -1,36 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>sangcahaya.id</title>
+    <title>riwayat pesan </title>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
 </head>
 <body>
 
     <div class="container">
+        <form action="/api2" method="get">
+        <input type="date" name="date">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
         <div class="row">
             <div class="col-md-12">
-                
+                <p>riwayat pesan tanggal {{ $data->date }}</p>
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>Nama</th>
-                                <th>Serial</th>
-                               
-                                <th>Status</th>
+                                <th>nomor</th>
+                                <th>kategori</th>
+                                <th>Pesan</th>
+                                <th>Status pengiriman</th>
                             </tr>
                         </thead>
                         <tbody>
+                            
+                            @foreach ($data->message as $item)
                             <tr>
-                                <td>mamasuka</td>
-                                <td>padang</td>
-                                <td>10</td>
-                                <td>ow</td>
+                            <td>{{$item->phone->to}}</td>
+                            <td>{{$item->category}}</td>
+                            <td>{{$item->text}}</td>
+                            <td>{{$item->status}}</td>
+                            {{-- <td>{{$pesan['deviceID']}}</td> --}}
                             </tr>
-                            @foreach ($data as $item)
-                            <td>{{$item['data']->[0]['id']}}</td>
                             @endforeach
-                            <td>{{$data['data'][0]['id']}}</td>
                             
                             
                             <tr>

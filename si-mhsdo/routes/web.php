@@ -51,7 +51,7 @@ Route::Post('/insertmahasiswa', [MahasiswaController::class, 'insertmahasiswa'])
 Route::get('/pesan', [FormController::class, 'index']);
 Route::post('/pesan', [FormController::class, 'store']);
 
-Route::get('/api2', [FormController::class, 'riwayatPesan'])->name('riwayatPesan');
+Route::get('/api2', [FormController::class, 'infoRiwayat'])->name('infoRiwayat');
 
 Route::get('/email', [EmailController::class, 'create']);
 Route::post('/email', [EmailController::class, 'sendEmail'])->name('send.email');

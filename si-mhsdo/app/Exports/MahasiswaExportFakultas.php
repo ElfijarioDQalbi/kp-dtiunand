@@ -16,11 +16,8 @@ class MahasiswaExportFakultas implements FromQuery
     public function __construct($angkatan)
     {
         $this->angkatan = $angkatan;
-        //$this->fakultas = $fakultas;
-        var_dump($angkatan);
-        var_dump($this->angkatan);
-        //var_dump($request['angkatan']);
-        var_dump(request('angkatan'));
+        $this->fakultas = $fakultas;
+        
     }
     /**
      * @return \Illuminate\Support\Collection
@@ -28,6 +25,6 @@ class MahasiswaExportFakultas implements FromQuery
     
     public function query()
     {
-        //return Mahasiswa::query()->where('angkatan', '=', $this->angkatan);
+        return Mahasiswa::query()->where('angkatan', '=', $this->angkatan);
     }
 }

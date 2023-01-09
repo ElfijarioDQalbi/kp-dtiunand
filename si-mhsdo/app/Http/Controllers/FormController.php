@@ -57,5 +57,14 @@ class FormController extends Controller
         //return redirect()->back()->with(['message' => 'Pesan Whatsapp Berhasil dikirim!']);
     }
 
+    public function infoRiwayat(Request $request)
+    {
+        if ($request->has('date')) {
+            $date = $request->date;
+        }
+        return WablasTrait::infoRiwayat($request->date);
 
+
+        //return redirect()->back()->with(['message' => 'Pesan Whatsapp Berhasil dikirim!']);
+    }
 }

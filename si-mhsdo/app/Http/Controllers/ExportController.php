@@ -28,8 +28,7 @@ class ExportController extends Controller
             'angkatan' => 'required',
             'fakultas' => 'required',
         ]);
-        //$namafile = "Fakultas " + $request['fakultas'] + ".xlsx";
-        //dd($request['angkatan']);
+
         return Excel::download(new MahasiswaExportFakultas($request['angkatan'], $request['fakultas'], "mahasiswa DO.xlsx"));
     }
 }
