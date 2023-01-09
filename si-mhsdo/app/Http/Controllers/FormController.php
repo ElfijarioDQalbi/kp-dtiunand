@@ -35,7 +35,7 @@ class FormController extends Controller
         $mhs->when($request->fkltas, function ($query) use ($request) {
             return $query->whereFakultas($request->fkltas);
         });
-        return view('admin.pesan', ['mhs' => $mhs->paginate(10)]);
+        return view('admin.pesan', ['mhs' => $mhs->paginate(5)]);
 
         // if($request){
         //     $mhs = Mahasiswa::where('angkatan', 'LIKE', '%' .$request->search. '%')->get();      
@@ -46,11 +46,11 @@ class FormController extends Controller
 
     }
 
-    public function store()
+    public function store(Request $request)
     {
         $mhs = Mahasiswa::query();
 
-        dd(request("ids[{{ $mhsiswa->id }}]"));
+        // // dd(request("ids[{{ $mhsiswa->id }}]"));
         // $request->validate([
         //     // 'email' => 'required|email',
         //     //'subject' => 'required',
@@ -58,33 +58,21 @@ class FormController extends Controller
         //     'content' => 'required',
         //   ]);
 
-        // $mahasiswa =DB::select('select * from mahasiswas');
-        // $kumpulan_data = [];
-        // foreach ($mahasiswa as $nilai) {
-        // //$data['phone'] = request('no_wa'); meminta nilai yang ada didalam form yang disediakan
-        // $mhs['phone'] = $nilai->hp_mahasiswa ;
-        // $mhs['message'] = request('pesan');
-        // $mhs['secret'] = false;
-        // $mhs['retry'] = false;
-        // $mhs['isGroup'] = false;
-        // array_push($kumpulan_data, $mhs);
-        // }
-        // WablasTrait::sendText($kumpulan_data);
+        $mahasiswa =DB::select('select * from mahasiswas');
+        $kumpulan_data = [];
+        foreach ($mahasiswa as $nilai) {
+        //$data['phone'] = request('no_wa'); meminta nilai yang ada didalam form yang disediakan
+        $mhs['phone'] = $nilai->hp_mahasiswa ;
+        $mhs['message'] = request('pesan');
+        $mhs['secret'] = false;
+        $mhs['retry'] = false;
+        $mhs['isGroup'] = false;
+        array_push($kumpulan_data, $mhs);
+        }
+        WablasTrait::sendText($kumpulan_data);
 
-        // return redirect()->back()->with(['message' => 'Email successfully sent!']);
+        return redirect()->back()->with(['message' => 'Email successfully sent!']);
     }
 
-    public function export(Request $request)
-    {
-        $ids = $request->ids;
-        // print_r($ids);
-        return (new MahasiswaExportSelect($ids))->download('Mahasiswa1.xlsx');
-    }
-
-    // public function export(Request $request){
-    //     $ids = $request->ids;
-    //     $data = Mahasiswa::whereIn('id', $ids);
-    //     return Excel::download(new MahasiswaExportSelect, 'daftarmahasiswaselect.xlsx');
-    // }
 
 }

@@ -8,6 +8,7 @@ use App\Exports\MahasiswaExport;
 use App\Imports\MahasiswaImport;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Storage;
+use App\Exports\MahasiswaExportSelect;
 
 class MahasiswaController extends Controller
 {
@@ -21,13 +22,25 @@ class MahasiswaController extends Controller
     //     $this->Mahasiswa = new Mahasiswa();
     // }
     
-    public function index()
+    public function index(Request $request)
     {
-        //
-        // $mahasiswa = ['mahasiswa' => $this->Mahasiswa->allData()];
+        $mhs = Mahasiswa::query();
+        //filter angkatan
+        $mhs->when($request->aktn, function ($query) use ($request) {
+            return $query->where('angkatan', 'like', '%' . $request->aktn . '%');
+        });
+        //filter semester
+        $mhs->when($request->smester, function ($query) use ($request) {
+            return $query->whereSemester($request->smester);
+        });
+        //filter fakultas
+        $mhs->when($request->fkltas, function ($query) use ($request) {
+            return $query->whereFakultas($request->fkltas);
+        });
+        return view('admin.mahasiswa', ['mhs' => $mhs->paginate(5)]);
 
-        $mhs = Mahasiswa::paginate(4);
-        return view('admin.mahasiswa' , compact('mhs'));
+        // $mhs = Mahasiswa::paginate(4);
+        // return view('admin.mahasiswa' , compact('mhs'));
     }
 
     /**
@@ -166,5 +179,12 @@ class MahasiswaController extends Controller
         Excel::import(new MahasiswaImport, public_path('/MahasiswaData/'.$nama_file));
 
         return redirect()->back(); 
+    }
+
+    public function exportselected(Request $request)
+    {
+        $ids = $request->ids;
+        // print_r($ids);
+        return (new MahasiswaExportSelect($ids))->download('Mahasiswa1.xlsx');
     }
 }

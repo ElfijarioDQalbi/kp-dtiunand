@@ -41,10 +41,11 @@ Route::get('/deletemhs_{id}',[MahasiswaController::class, 'destroy'])->name('del
 
 Route::get('/exportexcel',[MahasiswaController::class, 'export'])->name('exportmhs');
 Route::post('/importexcel',[MahasiswaController::class, 'import'])->name('importmhs');
+Route::get('/exportexcelselected',[MahasiswaController::class, 'exportselected'])->name('exportmhsselected');
 
 Route::get('/pesan', [FormController::class, 'index'])->name('indexpesanwa'); 
 Route::post('/kirimpesan', [FormController::class, 'store'])->name('kirimpesan'); 
 Route::get('/exportpesan',[FormController::class, 'export'])->name('exportpesan');
 
-Route::get('/email', [EmailController::class , 'create']);
+Route::get('/email', [EmailController::class , 'index'])->name('indexemail'); ;
 Route::post('/email', [EmailController::class , 'sendEmail'])->name('send.email');

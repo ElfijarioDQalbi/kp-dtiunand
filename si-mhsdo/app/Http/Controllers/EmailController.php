@@ -15,12 +15,25 @@ class EmailController extends Controller
     //     $this->Mahasiswa = new Mahasiswa();
     // }
 
-    public function create()
+    public function index(Request $request)
     {
-      // $data =[
-      //   'mahasiswa' => $this->Mahasiswa->allData(),];
-      $mhs = Mahasiswa::all();
-      return view('/admin/email', compact('mhs'));
+      $mhs = Mahasiswa::query();
+        //filter angkatan
+        $mhs->when($request->aktn, function ($query) use ($request) {
+            return $query->where('angkatan', 'like', '%' . $request->aktn . '%');
+        });
+        //filter semester
+        $mhs->when($request->smester, function ($query) use ($request) {
+            return $query->whereSemester($request->smester);
+        });
+        //filter fakultas
+        $mhs->when($request->fkltas, function ($query) use ($request) {
+            return $query->whereFakultas($request->fkltas);
+        });
+        return view('admin.email', ['mhs' => $mhs->paginate(5)]);
+
+      // $mhs = Mahasiswa::all();
+      // return view('/admin/email', compact('mhs'));
     }
     
     public function sendEmail(Request $request)

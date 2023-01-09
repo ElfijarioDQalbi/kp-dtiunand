@@ -68,9 +68,6 @@
           </div>
         @endif
       
-
-        <form action="{{ route('exportpesan')}}" method="GET">
-          @csrf
           <!--table-->
           <div class="table-responsive mt-3">
             <table class="table table-bordered">
@@ -91,10 +88,10 @@
               </thead>        
               <tbody>
                 {{-- <div {{ $i = 1 }}> </div> --}}
-                @foreach ($mhs as $mhsiswa)
+                @foreach ($mhs as $index => $mhsiswa)
                 <tr>
                   <td class="text-center"><input type="checkbox" class="allmhs" name="ids[{{ $mhsiswa->id }}]" value="{{ $mhsiswa->id }}"></td>
-                  <td class="text-center">{{ $loop->iteration }}</td>
+                  <td class="text-center">{{ $index + $mhs->firstItem() }}</td>
                   <td><p>{{ $mhsiswa->nama }}</p></td>
                   <td><p>{{ $mhsiswa->prodi }}</p></td>
                   <td><p>{{ $mhsiswa->hp_mahasiswa }}</p></td>
@@ -102,17 +99,18 @@
                 @endforeach
               </tbody>     
             </table>
-            <input type="submit" value="exporttable">
-            {{-- {{ $mhs->links() }} --}}
+            {{-- <input type="submit" value="exporttable"> --}}
+            {{ $mhs->withQueryString()->links() }}
           </div>
-        </form>
 
         <form action="{{ route('kirimpesan')}}" method="POST">
           <div class="form-group">
             <label for="\">Pesan</label>
               <textarea name="pesan" class="form-control bg-light" cols="30" rows="5" placeholder="Pesan"></textarea>
           </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary"><i class="fa fa-paper-plane"></i> Send</button>
+          </div>
         </form>
 
       </div>
