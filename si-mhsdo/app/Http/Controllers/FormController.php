@@ -21,6 +21,22 @@ class FormController extends Controller
     public function index(Request $request)
     {
         // return $request->all();
+        $curl = curl_init();
+        $token = env('SECURITY_TOKEN_WABLAS');
+        curl_setopt($curl, CURLOPT_URL, "https://jogja.wablas.com/api/device/info?token=$token");
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "GET");
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
+
+        $result = curl_exec($curl);
+        curl_close($curl);
+        $api = json_decode($result, true);
+        //var_dump($api);
+        // return view('admin/apiwa', compact('api'));
+
+
+        // return $request->all();
 
         $mhs = Mahasiswa::query();
         //filter angkatan
@@ -35,7 +51,7 @@ class FormController extends Controller
         $mhs->when($request->fkltas, function ($query) use ($request) {
             return $query->whereFakultas($request->fkltas);
         });
-        return view('admin.pesan', ['mhs' => $mhs->paginate(5)]);
+        return view('admin.pesan', ['mhs' => $mhs->paginate(5)], compact('api'));
 
         // if($request){
         //     $mhs = Mahasiswa::where('angkatan', 'LIKE', '%' .$request->search. '%')->get();      
@@ -58,21 +74,19 @@ class FormController extends Controller
         //     'content' => 'required',
         //   ]);
 
-        $mahasiswa =DB::select('select * from mahasiswas');
+        $mahasiswa = DB::select('select * from mahasiswas');
         $kumpulan_data = [];
         foreach ($mahasiswa as $nilai) {
-        //$data['phone'] = request('no_wa'); meminta nilai yang ada didalam form yang disediakan
-        $mhs['phone'] = $nilai->hp_mahasiswa ;
-        $mhs['message'] = request('pesan');
-        $mhs['secret'] = false;
-        $mhs['retry'] = false;
-        $mhs['isGroup'] = false;
-        array_push($kumpulan_data, $mhs);
+            //$data['phone'] = request('no_wa'); meminta nilai yang ada didalam form yang disediakan
+            $mhs['phone'] = $nilai->hp_mahasiswa;
+            $mhs['message'] = request('pesan');
+            $mhs['secret'] = false;
+            $mhs['retry'] = false;
+            $mhs['isGroup'] = false;
+            array_push($kumpulan_data, $mhs);
         }
         WablasTrait::sendText($kumpulan_data);
 
         return redirect()->back()->with(['message' => 'Email successfully sent!']);
     }
-
-
 }

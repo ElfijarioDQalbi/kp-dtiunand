@@ -12,6 +12,49 @@
         </div>
     </div>
   </section>
+  <div class="card-body">
+    @if(session()->has('message'))
+      <div class="alert alert-success">
+        {{ session()->get('message') }}
+      </div>
+    @endif
+  
+
+      <!--table-->
+      <div class="table-responsive mt-3">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              {{-- <th style="width:10px;">
+                <div class="incheck-primary d-inline">
+                  <input wire:model="selectedRows" type="checkbox" value="{{ $mhs->id }}" name="todo2" id="{{ $$mhs->id }}">
+                  <label for="{{ $mhs->id }}"></label>
+                </div>
+              </th> --}}
+             
+              <th scope="col" class="text-center">No</th>
+              <th scope="col" class="text-center">Nama Mahasiswa</th>
+              <th scope="col" class="text-center">Program Studi</th>
+              <th scope="col" class="text-center">Nomor WhatsApp</th>
+            </tr>
+          </thead>        
+          <tbody>
+            {{-- <div {{ $i = 1 }}> </div> --}}
+            <tr>
+              
+              <td class="text-center"></td>
+              <td>{{$api['data']['name']}}</td>
+              <td>{{$api['data']['serial']}}</td>
+              <td>{{$api['data']['status']}}</td>
+            </tr>
+          </tbody>     
+        </table>
+
+  </div>
+</div
+
+
+
 
   <!-- Main content -->
   <section class="content">
