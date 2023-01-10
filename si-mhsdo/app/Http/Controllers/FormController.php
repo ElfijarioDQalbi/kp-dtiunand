@@ -123,7 +123,7 @@ class FormController extends Controller
 
         $result = curl_exec($curl);
         curl_close($curl);
-        echo "<pre>";
+        // echo "<pre>";
         //print_r($result);
 
         $data = json_decode($result);
