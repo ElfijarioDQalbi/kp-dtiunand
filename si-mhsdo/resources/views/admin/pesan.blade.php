@@ -33,9 +33,9 @@
               </th> --}}
              
               <th scope="col" class="text-center">No</th>
-              <th scope="col" class="text-center">Nama Mahasiswa</th>
-              <th scope="col" class="text-center">Program Studi</th>
-              <th scope="col" class="text-center">Nomor WhatsApp</th>
+              <th scope="col" class="text-center">Nama Akun API</th>
+              <th scope="col" class="text-center">Kode Akun</th>
+              <th scope="col" class="text-center">Status API</th>
             </tr>
           </thead>        
           <tbody>
@@ -105,12 +105,9 @@
         Kirim Peringatan ke Mahasiswa via WhatsApp
       </div>
       <div class="card-body">
-        @if(session()->has('message'))
-          <div class="alert alert-success">
-            {{ session()->get('message') }}
-          </div>
-        @endif
-      
+        
+        <form action="{{ route('kirimpesan')}}" method="post">
+          @csrf
           <!--table-->
           <div class="table-responsive mt-3">
             <table class="table table-bordered">
@@ -142,17 +139,14 @@
                 @endforeach
               </tbody>     
             </table>
-            {{-- <input type="submit" value="exporttable"> --}}
             {{ $mhs->withQueryString()->links() }}
           </div>
-
-        <form action="{{ route('kirimpesan')}}" method="POST">
           <div class="form-group">
             <label for="\">Pesan</label>
               <textarea name="pesan" class="form-control bg-light" cols="30" rows="5" placeholder="Pesan"></textarea>
           </div>
           <div class="text-center">
-            <button type="submit" class="btn btn-primary"><i class="fa fa-paper-plane"></i> Send</button>
+            <button type="submit" value="exporttable" class="btn btn-primary"><i class="fa fa-paper-plane"></i> Send</button>
           </div>
         </form>
 

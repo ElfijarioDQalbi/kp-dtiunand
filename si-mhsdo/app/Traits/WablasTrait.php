@@ -79,6 +79,6 @@ trait WablasTrait
         //dd($data);
         // echo '<br>';
         //var_dump($data);
-        return view('admin/riwayatPesan', compact('data'));
+        return view('admin/riwayatwa', compact('data'));
     }
 }

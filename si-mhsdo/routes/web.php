@@ -32,20 +32,23 @@ Route::get('/createadmin', function () {
 // Route::resource('mhs', MahasiswaController::class);
 
 Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('indexmahasiswa');
-Route::get('/createmhs',[MahasiswaController::class, 'create'])->name('createmhs');
-Route::post('/insertmhs',[MahasiswaController::class, 'store'])->name('insertmhs');
-Route::get('/editmhs_{id}',[MahasiswaController::class, 'edit'])->name('editmhs');
-Route::post('/updatemhs_{id}',[MahasiswaController::class, 'update'])->name('updatemhs');
-Route::get('/detailmhs_{id}',[MahasiswaController::class, 'show'])->name('detailmhs');
-Route::get('/deletemhs_{id}',[MahasiswaController::class, 'destroy'])->name('deletemhs');
+Route::get('/createmhs', [MahasiswaController::class, 'create'])->name('createmhs');
+Route::post('/insertmhs', [MahasiswaController::class, 'store'])->name('insertmhs');
+Route::get('/editmhs_{id}', [MahasiswaController::class, 'edit'])->name('editmhs');
+Route::post('/updatemhs_{id}', [MahasiswaController::class, 'update'])->name('updatemhs');
+Route::get('/detailmhs_{id}', [MahasiswaController::class, 'show'])->name('detailmhs');
+Route::get('/deletemhs_{id}', [MahasiswaController::class, 'destroy'])->name('deletemhs');
 
-Route::get('/exportexcel',[MahasiswaController::class, 'export'])->name('exportmhs');
-Route::post('/importexcel',[MahasiswaController::class, 'import'])->name('importmhs');
-Route::get('/exportexcelselected',[MahasiswaController::class, 'exportselected'])->name('exportmhsselected');
+Route::get('/exportexcel', [MahasiswaController::class, 'export'])->name('exportmhs');
+Route::post('/importexcel', [MahasiswaController::class, 'import'])->name('importmhs');
+Route::get('/exportexcelselected', [MahasiswaController::class, 'exportselected'])->name('exportmhsselected');
 
-Route::get('/pesan', [FormController::class, 'index'])->name('indexpesanwa'); 
-Route::post('/kirimpesan', [FormController::class, 'store'])->name('kirimpesan'); 
-Route::get('/exportpesan',[FormController::class, 'export'])->name('exportpesan');
+Route::get('/pesan', [FormController::class, 'index'])->name('indexpesanwa');
+Route::post('/kirimpesan', [FormController::class, 'store'])->name('kirimpesan');
+Route::get('/exportpesan', [FormController::class, 'export'])->name('exportpesan');
 
-Route::get('/email', [EmailController::class , 'index'])->name('indexemail'); ;
-Route::post('/email', [EmailController::class , 'sendEmail'])->name('send.email');
+Route::get('/email', [EmailController::class, 'index'])->name('indexemail');;
+Route::post('/email', [EmailController::class, 'sendEmail'])->name('send.email');
+
+Route::get('/riwayatwa', [FormController::class, 'infoRiwayat'])->name('riwayat.wa');;
+Route::get('/api2', [FormController::class, 'infoRiwayat'])->name('infoRiwayat');

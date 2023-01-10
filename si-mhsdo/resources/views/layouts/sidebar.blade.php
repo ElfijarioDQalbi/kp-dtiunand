@@ -50,6 +50,14 @@
                 </a>
               </li>
             </ul>
+            <li class="nav-item menu">
+              <a href="{{ route('riwayat.wa') }}" class="nav-link">
+                <i class="nav-icon fas fa-graduation-cap"></i>
+                <p>
+                  Riwayat WA
+                </p>
+              </a>
+            </li>
           </li>
           <li class="nav-header">ADMIN</li>
           <li class="nav-item">

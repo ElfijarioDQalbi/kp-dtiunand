@@ -64,7 +64,11 @@ class FormController extends Controller
 
     public function store(Request $request)
     {
-        $mhs = Mahasiswa::query();
+        $ids = $request->ids;
+        $mahasiswa = DB::table('mahasiswas')
+            ->whereIn('id', $ids)
+            ->select('nama', 'hp_mahasiswa')->get();
+        // $mhs = Mahasiswa::query();
 
         // // dd(request("ids[{{ $mhsiswa->id }}]"));
         // $request->validate([
@@ -74,19 +78,62 @@ class FormController extends Controller
         //     'content' => 'required',
         //   ]);
 
-        $mahasiswa = DB::select('select * from mahasiswas');
         $kumpulan_data = [];
-        foreach ($mahasiswa as $nilai) {
-            //$data['phone'] = request('no_wa'); meminta nilai yang ada didalam form yang disediakan
-            $mhs['phone'] = $nilai->hp_mahasiswa;
+        foreach ($mahasiswa as $surang) {
+            //var_dump($surang->nama);
+            $mhs['phone'] = $surang->hp_mahasiswa;
             $mhs['message'] = request('pesan');
             $mhs['secret'] = false;
             $mhs['retry'] = false;
             $mhs['isGroup'] = false;
             array_push($kumpulan_data, $mhs);
         }
+        //var_dump($kumpulan_data);
         WablasTrait::sendText($kumpulan_data);
 
-        return redirect()->back()->with(['message' => 'Email successfully sent!']);
+        return redirect()->back()->with(['message' => 'Whatsapp Message successfully sent!']);
+    }
+
+    public function infoRiwayat(Request $request)
+    {
+
+        $curl = curl_init();
+        $token = env('SECURITY_TOKEN_WABLAS');
+        $date = '';
+        if ($request->has('date')) {
+            $date = $request->date;
+        }
+
+        $perPage = "";
+        $phone = "";
+        $page = "";
+
+        curl_setopt(
+            $curl,
+            CURLOPT_HTTPHEADER,
+            array(
+                "Authorization: $token",
+            )
+        );
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "GET");
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_URL,  "https://jogja.wablas.com/api/report/message?date=$date&perPage=$perPage&phone=$phone&page=$page");
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
+
+        $result = curl_exec($curl);
+        curl_close($curl);
+        echo "<pre>";
+        //print_r($result);
+
+        $data = json_decode($result);
+
+        //dd($data);
+        // echo '<br>';
+        //var_dump($data);
+        return view('admin/riwayatwa', compact('data'));
+
+
+        //return redirect()->back()->with(['message' => 'Pesan Whatsapp Berhasil dikirim!']);
     }
 }
