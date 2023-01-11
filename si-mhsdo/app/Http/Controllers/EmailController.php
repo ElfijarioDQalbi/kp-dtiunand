@@ -67,7 +67,7 @@ class EmailController extends Controller
           ->subject($mhs['subject']);
       });
     }
-    return var_dump($mhs);
-    //return back()->with(['message' => 'Email successfully sent!']);
+    //return var_dump($mhs);
+    return back()->with(['message' => 'Email successfully sent!']);
   }
 }
