@@ -38,6 +38,10 @@ class EmailController extends Controller
 
   public function sendEmail(Request $request)
   {
+    $this->validate($request,  [
+      'ids' => 'required',
+    ], ['ids.required' => 'Wajib memilih mahasiswa yang akan dikirim peringatan']);
+
     $ids = $request->ids;
     $mahasiswa = DB::table('mahasiswas')
       ->whereIn('id', $ids)

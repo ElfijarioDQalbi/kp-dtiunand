@@ -29,6 +29,10 @@
       {{ $message }}
     </div>
     @endif
+    @error('ids')
+    <div class="alert alert-danger">{{ $message }}</div>
+    @enderror
+    
 
     <form action="{{ route('indexmahasiswa') }}" method="GET">
       @csrf

@@ -68,6 +68,10 @@
             {{ session()->get('message') }}
           </div>
         @endif
+        @error('ids')
+    <div class="alert alert-danger">{{ $message }}</div>
+    @enderror
+    
 
         <form action="{{ route('send.email') }}" method="POST">
           @csrf

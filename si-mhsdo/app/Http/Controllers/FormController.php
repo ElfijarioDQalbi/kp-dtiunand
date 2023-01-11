@@ -64,6 +64,10 @@ class FormController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'ids' => 'required',
+        ], ['ids.required' => 'Wajib memilih mahasiswa yang akan menerima pesan peringatan']);
+
         $ids = $request->ids;
         $mahasiswa = DB::table('mahasiswas')
             ->whereIn('id', $ids)
