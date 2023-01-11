@@ -51,4 +51,3 @@ Route::get('/email', [EmailController::class, 'index'])->name('indexemail');;
 Route::post('/email', [EmailController::class, 'sendEmail'])->name('send.email');
 
 Route::get('/riwayatwa', [FormController::class, 'infoRiwayat'])->name('riwayat.wa');;
-Route::get('/api2', [FormController::class, 'infoRiwayat'])->name('infoRiwayat');

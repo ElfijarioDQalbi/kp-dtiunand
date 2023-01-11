@@ -16,7 +16,7 @@
 
         <!-- Main content -->
   <section class="content">
-        <form action="/api2" method="get">
+        <form action="/riwayatwa" method="get">
         <input type="date" class="form-control" name="date">
         <button type="submit" class="btn btn-primary">Submit</button>
         </form>
