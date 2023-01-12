@@ -63,37 +63,38 @@ class MahasiswaController extends Controller
     public function store(Request $request)
     {
 
-        $this->validate($request, [
-            'nama' => 'required',
-            'nim' => 'required',
-            'prodi' => 'required',
-            'fakultas' => 'required',
-            'angkatan' => 'required',
-            'nohp_mhs' => 'required',
-            'nohp_ortu' => 'required',
-            'email' => 'required',
-            'ipk' => 'required',
-            'total_sks' => 'required',
-            'masa_studi' => 'required',
-            'status' => 'required',
-            'evaluasi' => 'required',
-            'semester' => 'required'
-        ], [
-            'nama.required' => 'Masukkan Nama Nahasiswa',
-            'nim.required' => 'Masukkan NIM Mahasiswa ',
-            'prodi.required' => 'Masukkan Program Studi ',
-            'fakultas.required' => '',
-            'angkatan.required' => '',
-            'nohp_mhs.required' => '',
-            'nohp_ortu.required' => '',
-            'email.required' => '',
-            'ipk.required' => '',
-            'total_sks.required' => '',
-            'masa_studi.required' => '',
-            'status.required' => '',
-            'evaluasi.required' => '',
-            'semester.required' => ''
-        ]);
+        // $this->validate($request, [
+        //     'nama' => 'required',
+        //     'nim' => 'required',
+        //     'prodi' => 'required',
+        //     'fakultas' => 'required',
+        //     'angkatan' => 'required',
+        //     'nohp_mhs' => 'required',
+        //     'nohp_ortu' => 'required',
+        //     'email' => 'required',
+        //     'ipk' => 'required',
+        //     'total_sks' => 'required',
+        //     'masa_studi' => 'required',
+        //     'status' => 'required',
+        //     'evaluasi' => 'required',
+        //     'semester' => 'required'
+        // ], [
+        //     'nama.required' => 'Masukkan Nama Mahasiswa',
+        //     'nim.required' => 'Masukkan NIM Mahasiswa ',
+        //     'prodi.required' => 'Masukkan Program Studi ',
+        //     'fakultas.required' => 'Masukkan Fakultas ',
+        //     'angkatan.required' => 'Masukkan Angkatan ',
+        //     'nohp_mhs.required' => 'Masukkan Nomor Mahasiswa',
+        //     'nohp_ortu.required' => 'Masukkan Nomor Orang tua/ Wali',
+        //     'email.required' => 'Masukan email Mahasiswa yang aktif',
+        //     'ipk.required' => 'Masukkan IPK mahasiswa',
+        //     'total_sks.required' => 'Masukkan total SKS Mahasiswa yang telah diambil',
+        //     'masa_studi.required' => 'Masukkan Masa Studi Mahasiswa',
+        //     'status.required' => 'Masukkan Status Mahasiswa',
+        //     'evaluasi.required' => 'Masukkan hasil Evaluasi Mahasiswa ',
+        //     'semester.required' => 'Masukkan Semester Mahasiswa'
+        // ]);
+
         Mahasiswa::create($request->all());
         return redirect('/mahasiswa')->with('success-i', 'Data Berhasil Ditambahkan');
     }
@@ -192,8 +193,7 @@ class MahasiswaController extends Controller
         $file_excel->move('MahasiswaData', $nama_file);
 
         Excel::import(new MahasiswaImport, public_path('/MahasiswaData/' . $nama_file));
-
-        return redirect()->back();
+        return redirect('/mahasiswa')->with('success-i', 'Data Berhasil Ditambahkan');
     }
 
     public function exportselected(Request $request)

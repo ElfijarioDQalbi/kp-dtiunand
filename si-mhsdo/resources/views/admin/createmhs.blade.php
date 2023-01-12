@@ -38,7 +38,7 @@
       <div class="card-body">
         <div div class="form-group">
           <label>Nama</label>
-          <input type="text" name="nama" placeholder="Masukkan Nama Lengkap Mahasiswa..." class="form-control">
+          <input type="text" name="nama" placeholder="Masukkan Nama Lengkap Mahasiswa..." class="form-control"  >
           @error('nama')
           <div class="alert alert-danger">{{ $message }}</div>
           @enderror
@@ -46,7 +46,7 @@
       
         <div class="form-group">
           <label>NIM</label>
-          <input type="number" name="nim" placeholder="Masukkan NIM Mahasiswa..." class="form-control" minlength="10" maxlength="11" >
+          <input type="text" name="nim" placeholder="Masukkan NIM Mahasiswa..." class="form-control" minlength="10" maxlength="11" >
           @error('nim')
           <div class="alert alert-danger">{{ $message }}</div>
           @enderror
@@ -112,7 +112,7 @@
 
           <div class="form-group col-md-6">
             <label>Total SKS</label>
-            <input type="number" name="total_sks" placeholder="Masukkan Total SKS Terakhir Mahasiswa..." class="form-control" maxlength="3" >
+            <input type="text" name="total_sks" placeholder="Masukkan Total SKS Terakhir Mahasiswa..." class="form-control" maxlength="3" >
             @error('total_sks')
           <div class="alert alert-danger">{{ $message }}</div>
           @enderror
@@ -140,12 +140,12 @@
         <div class="form-row">
         <label>Masa Studi</label>
         <div class="input-group mb-3">
-          <input type="number" name="masa_studi" class="form-control" placeholder="Masukkan Masa Studi... cth: 4" aria-label="Recipient's username" aria-describedby="basic-addon2" >
+          <input type="text" name="masa_studi" class="form-control" placeholder="Masukkan Masa Studi... cth: 4" aria-label="Recipient's username" aria-describedby="basic-addon2" >
           <div class="input-group-append">
             <span class="input-group-text" id="basic-addon2">Tahun</span>
           </div>
         </div>
-        @error('masa-studi')
+        @error('masa_studi')
           <div class="alert alert-danger">{{ $message }}</div>
           @enderror
       </div>
@@ -169,7 +169,7 @@
         <div class="form-group">
           <label>Evaluasi</label>
           <select class="form-control" aria-label="Default select example" name="evaluasi" >
-            <option selected>=== Pilih evaluasi mahasiswa ===</option>
+            <option selected disabled>=== Pilih evaluasi mahasiswa ===</option>
             <option value="terancam do">Terancam Drop Out</option>
             <option value="aman">Aman</option>
           </select>
