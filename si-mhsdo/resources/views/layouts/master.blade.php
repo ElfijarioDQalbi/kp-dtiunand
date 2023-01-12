@@ -12,7 +12,7 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="assets/dist/css/adminlte.min.css">
 </head>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini layout-fixed">
 <!-- Site wrapper -->
 <div class="wrapper">
   @include('layouts.navbar')
@@ -31,7 +31,5 @@
 <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="assets/dist/js/adminlte.min.js"></script>
-{{-- <!-- AdminLTE for demo purposes -->
-<script src="assets/dist/js/demo.js"></script> --}}
 </body>
 </html>

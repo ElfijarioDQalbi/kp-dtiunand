@@ -25,7 +25,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link" aria-selected="false">
               <i class="nav-icon fas fa-bullhorn"></i>
               <p>
                 Pesan
@@ -52,24 +52,24 @@
             </ul>
             <li class="nav-item menu">
               <a href="{{ route('riwayat.wa') }}" class="nav-link">
-                <i class="nav-icon fas fa-graduation-cap"></i>
+                <i class="nav-icon fas fa-history"></i>
                 <p>
-                  Riwayat WA
+                  Riwayat Pesan
                 </p>
               </a>
             </li>
           </li>
           <li class="nav-header">ADMIN</li>
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a href="/akun" class="nav-link">
               <i class="nav-icon fas fa-user-circle"></i>
               <p>
                 Akun
               </p>
             </a>
-          </li>
+          </li> --}}
           <li class="nav-item">
-            <a href="/" class="nav-link">
+            <a href="/logout" class="nav-link">
               <i class="nav-icon fas fa-power-off"></i>
               <p>
                 Log Out
@@ -87,4 +87,24 @@
    <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
   </aside>
-  <!-- /.control-sidebar -->
+
+  {{-- <script>
+    const links = document.querySelectorAll('.nav-link');
+
+    if(links.length){
+      links.forEach((link) = > {
+        link.addEventListener('click', (e) => {
+          links.forEach((link) => {
+            link.classList.remove('active');
+          });
+          e.preventDefault();
+          link.classList.add('active');
+        });
+      });
+    }
+
+  </script>
+
+  .nav-link.active {
+    color:white;
+  } --}}

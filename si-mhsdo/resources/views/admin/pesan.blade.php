@@ -12,56 +12,52 @@
         </div>
     </div>
   </section>
-  <div class="card-body">
-    @if(session()->has('message'))
-      <div class="alert alert-success">
-        {{ session()->get('message') }}
-      </div>
-    @endif
-    @error('ids')
-    <div class="alert alert-danger">{{ $message }}</div>
-    @enderror
-    
+
   
-
-      <!--table-->
-      <div class="table-responsive mt-3">
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              {{-- <th style="width:10px;">
-                <div class="incheck-primary d-inline">
-                  <input wire:model="selectedRows" type="checkbox" value="{{ $mhs->id }}" name="todo2" id="{{ $$mhs->id }}">
-                  <label for="{{ $mhs->id }}"></label>
-                </div>
-              </th> --}}
-             
-              <th scope="col" class="text-center">No</th>
-              <th scope="col" class="text-center">Nama Akun API</th>
-              <th scope="col" class="text-center">Kode Akun</th>
-              <th scope="col" class="text-center">Status API</th>
-            </tr>
-          </thead>        
-          <tbody>
-            {{-- <div {{ $i = 1 }}> </div> --}}
-            <tr>
-              
-              <td class="text-center"></td>
-              <td>{{$api['data']['name']}}</td>
-              <td>{{$api['data']['serial']}}</td>
-              <td>{{$api['data']['status']}}</td>
-            </tr>
-          </tbody>     
-        </table>
-
-  </div>
-</div
-
-
-
+    
 
   <!-- Main content -->
   <section class="content">
+
+    <div class="col-md-8">
+      <div class="card bg-white mb-3">
+        <div class="card-header bg-primary">
+          Koneksi Sistem dengan API WhatsApp
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+              <i class="fas fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+  
+        <div class="card-body">
+          <!--table-->
+          <div class="table-responsive mt-3">
+            <table class="table table-bordered">
+              <thead>
+              <tr>
+                <th scope="col" class="text-center">Nama Akun API</th>
+                <th scope="col" class="text-center">Kode Akun</th>
+                <th scope="col" class="text-center">Status API</th>
+              </tr>
+              </thead>        
+              <tbody>
+                <tr> 
+                  <td>{{$api['data']['name']}}</td>
+                  <td>{{$api['data']['serial']}}</td>
+                  <td><span class="badge badge-pill badge-success">{{$api['data']['status']}}</span></td>
+                </tr>
+              </tbody>     
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
     <form action="{{ route('indexpesanwa') }}" method="GET">
       @csrf
       <div class="row g-3 align-items-center ml-1">  
@@ -109,7 +105,12 @@
         Kirim Peringatan ke Mahasiswa via WhatsApp
       </div>
       <div class="card-body">
-        
+        @if(session()->has('message'))
+          <div class="alert alert-success">
+            {{ session()->get('message') }}
+          </div>
+        @endif
+
         <form action="{{ route('kirimpesan')}}" method="post">
           @csrf
           <!--table-->

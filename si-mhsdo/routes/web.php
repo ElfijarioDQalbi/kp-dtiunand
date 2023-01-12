@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Mahasiswa;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\MahasiswaController;
@@ -17,19 +19,19 @@ use App\Http\Controllers\MahasiswaController;
 */
 
 Route::get('/', function () {
-    return view('admin/beranda');
+    $jlhmhs_smstr3 = Mahasiswa::where('semester','3')->count();
+    $jlhmhs_smstr13 = Mahasiswa::where('semester','13')->count();
+    return view('admin/beranda', compact('jlhmhs_smstr3','jlhmhs_smstr13'));
 });
-Route::get('/laporan', function () {
-    return view('admin/laporan');
-});
-Route::get('/akun', function () {
-    return view('admin/akun');
-});
-Route::get('/createadmin', function () {
-    return view('admin/tambahadmin');
-});
-
-// Route::resource('mhs', MahasiswaController::class);
+// Route::get('/laporan', function () {
+//     return view('admin/laporan');
+// });
+// Route::get('/akun', function () {
+//     return view('admin/akun');
+// });
+// Route::get('/createadmin', function () {
+//     return view('admin/tambahadmin');
+// });
 
 Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('indexmahasiswa');
 Route::get('/createmhs', [MahasiswaController::class, 'create'])->name('createmhs');
@@ -46,8 +48,14 @@ Route::get('/exportexcelselected', [MahasiswaController::class, 'exportselected'
 Route::get('/pesan', [FormController::class, 'index'])->name('indexpesanwa');
 Route::post('/kirimpesan', [FormController::class, 'store'])->name('kirimpesan');
 Route::get('/exportpesan', [FormController::class, 'export'])->name('exportpesan');
+Route::get('/riwayatwa', [FormController::class, 'infoRiwayat'])->name('riwayat.wa');
 
-Route::get('/email', [EmailController::class, 'index'])->name('indexemail');;
+Route::get('/email', [EmailController::class, 'index'])->name('indexemail');
 Route::post('/email', [EmailController::class, 'sendEmail'])->name('send.email');
 
-Route::get('/riwayatwa', [FormController::class, 'infoRiwayat'])->name('riwayat.wa');;
+Route::get('/login', [AuthController::class, 'loginakun'])->name('login');
+Route::get('/register', [AuthController::class, 'registerakun'])->name('register');
+Route::post('/registeruser', [AuthController::class, 'registerprocess'])->name('registeruser');
+Route::post('/loginuser', [AuthController::class, 'loginprocess'])->name('loginuser');
+Route::get('/logout', [AuthController::class, 'logoutakun'])->name('logout');
+
