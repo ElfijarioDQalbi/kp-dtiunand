@@ -170,10 +170,16 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
+
         <form action="{{ route('importmhs') }}" method="POST" enctype="multipart/form-data">
           @csrf
         
         <div class="modal-body">
+          <label> Perhatian : </label>
+          <p>* masukkan file degnan format XLSX</p>
+          <p>* bagian header wajib dibagian baris pertama</p>
+          <p>* format header : no, nama, nim, angkatan,	Prodi,	Fakultas,	Semester,	IPK,	Total_SKS,	Masa_Studi,	HP_Ortu,	HP_Mahasiswa,	Email,	Status,	Evaluasi,
+          </p>
           <div class="form-group">
             <input type="file" name="excel_file" required >
           </div>

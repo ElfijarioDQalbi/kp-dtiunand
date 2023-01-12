@@ -193,7 +193,7 @@ class MahasiswaController extends Controller
         $file_excel->move('MahasiswaData', $nama_file);
 
         Excel::import(new MahasiswaImport, public_path('/MahasiswaData/' . $nama_file));
-        return redirect('/mahasiswa')->with('success-i', 'Data Berhasil Ditambahkan');
+        //return redirect('/mahasiswa')->with('success-i', 'Data Berhasil Ditambahkan');
     }
 
     public function exportselected(Request $request)
