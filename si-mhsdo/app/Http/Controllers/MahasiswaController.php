@@ -187,13 +187,17 @@ class MahasiswaController extends Controller
 
     public function import(Request $request)
     {
-        $file_excel = $request->file('excel_file');
+        try {
+            $file_excel = $request->file('excel_file');
 
-        $nama_file = $file_excel->getClientOriginalName();
-        $file_excel->move('MahasiswaData', $nama_file);
+            $nama_file = $file_excel->getClientOriginalName();
+            $file_excel->move('MahasiswaData', $nama_file);
 
-        Excel::import(new MahasiswaImport, public_path('/MahasiswaData/' . $nama_file));
-        //return redirect('/mahasiswa')->with('success-i', 'Data Berhasil Ditambahkan');
+            Excel::import(new MahasiswaImport, public_path('/MahasiswaData/' . $nama_file));
+            return redirect('/mahasiswa')->with('success-i', 'Data Berhasil Ditambahkan');
+        } catch (Throwable $e) {
+            return redirect('/mahasiswa')->with('success-d', 'data yang dimasukkan salah, harap perhatikan kembali file yang telah diupload');
+        }
     }
 
     public function exportselected(Request $request)
