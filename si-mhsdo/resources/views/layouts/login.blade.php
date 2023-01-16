@@ -21,14 +21,10 @@
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <p class="h4"><b>Sistem Informasi Peringatan Dini Drop Out Mahasiswa Program Sarjana</b></p>
+      <p class="h4"><b>Sistem Informasi Peringatan Dini Drop Out Mahasiswa</b></p>
     </div>
     <div class="card-body">
-      @if ($message = Session::get('success-register'))
-      <div class="alert alert-success" role="alert"><i class="nav-icon fas fa-check-circle mr-1"></i>
-          {{ $message }}
-      </div>
-      @elseif ($message = Session::get('gagal-login'))
+      @if ($message = Session::get('gagal-login'))
       <div class="alert alert-danger" role="alert"><i class="nav-icon fas fa-window-close mr-1"></i>
         {{ $message }}
       </div>
@@ -75,8 +71,9 @@
       {{-- <p class="mb-1">
         <a href="forgot-password.html">I forgot my password</a>
       </p> --}}
-      <p class="mb-0">
-        <a href="/register" class="text-center">Register a new admin</a>
+      <p class="mb-0 mt-3">
+        <p class="text-center">Hubungi Admin untuk Register</p>
+        {{-- <a href="/register" class="text-center">Register a new admin</a> --}}
       </p>
     </div>
     <!-- /.card-body -->

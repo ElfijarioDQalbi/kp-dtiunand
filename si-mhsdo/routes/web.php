@@ -18,11 +18,8 @@ use App\Http\Controllers\MahasiswaController;
 |
 */
 
-Route::get('/', function () {
-    $jlhmhs_smstr3 = Mahasiswa::where('semester','3')->count();
-    $jlhmhs_smstr13 = Mahasiswa::where('semester','13')->count();
-    return view('admin/beranda', compact('jlhmhs_smstr3','jlhmhs_smstr13'));
-});
+Route::get('/', [MahasiswaController::class, 'dashboard'])->name('beranda-dashboard')->middleware(('auth'));
+
 // Route::get('/laporan', function () {
 //     return view('admin/laporan');
 // });
@@ -33,29 +30,34 @@ Route::get('/', function () {
 //     return view('admin/tambahadmin');
 // });
 
-Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('indexmahasiswa');
-Route::get('/createmhs', [MahasiswaController::class, 'create'])->name('createmhs');
-Route::post('/insertmhs', [MahasiswaController::class, 'store'])->name('insertmhs');
-Route::get('/editmhs_{id}', [MahasiswaController::class, 'edit'])->name('editmhs');
-Route::post('/updatemhs_{id}', [MahasiswaController::class, 'update'])->name('updatemhs');
-Route::get('/detailmhs_{id}', [MahasiswaController::class, 'show'])->name('detailmhs');
-Route::get('/deletemhs_{id}', [MahasiswaController::class, 'destroy'])->name('deletemhs');
+Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('indexmahasiswa')->middleware(('auth'));
+Route::get('/createmhs', [MahasiswaController::class, 'create'])->name('createmhs')->middleware(('auth'));
+Route::post('/insertmhs', [MahasiswaController::class, 'store'])->name('insertmhs')->middleware(('auth'));
+Route::get('/editmhs_{id}', [MahasiswaController::class, 'edit'])->name('editmhs')->middleware(('auth'));
+Route::post('/updatemhs_{id}', [MahasiswaController::class, 'update'])->name('updatemhs')->middleware(('auth'));
+Route::get('/detailmhs_{id}', [MahasiswaController::class, 'show'])->name('detailmhs')->middleware(('auth'));
+Route::get('/deletemhs_{id}', [MahasiswaController::class, 'destroy'])->name('deletemhs')->middleware(('auth'));
 
-Route::get('/exportexcel', [MahasiswaController::class, 'export'])->name('exportmhs');
-Route::post('/importexcel', [MahasiswaController::class, 'import'])->name('importmhs');
-Route::get('/exportexcelselected', [MahasiswaController::class, 'exportselected'])->name('exportmhsselected');
+Route::get('/exportexcel', [MahasiswaController::class, 'export'])->name('exportmhs')->middleware(('auth'));
+Route::post('/importexcel', [MahasiswaController::class, 'import'])->name('importmhs')->middleware(('auth'));
+Route::get('/exportexcelselected', [MahasiswaController::class, 'exportselected'])->name('exportmhsselected')->middleware(('auth'));
 
-Route::get('/pesan', [FormController::class, 'index'])->name('indexpesanwa');
-Route::post('/kirimpesan', [FormController::class, 'store'])->name('kirimpesan');
-Route::get('/exportpesan', [FormController::class, 'export'])->name('exportpesan');
-Route::get('/riwayatwa', [FormController::class, 'infoRiwayat'])->name('riwayat.wa');
+Route::get('/pesan', [FormController::class, 'index'])->name('indexpesanwa')->middleware(('auth'));
+Route::post('/kirimpesan', [FormController::class, 'store'])->name('kirimpesan')->middleware(('auth'));
+Route::get('/exportpesan', [FormController::class, 'export'])->name('exportpesan')->middleware(('auth'));
+Route::get('/riwayatwa', [FormController::class, 'infoRiwayat'])->name('riwayat.wa')->middleware(('auth'));
 
-Route::get('/email', [EmailController::class, 'index'])->name('indexemail');
-Route::post('/email', [EmailController::class, 'sendEmail'])->name('send.email');
+Route::get('/email', [EmailController::class, 'index'])->name('indexemail')->middleware(('auth'));
+Route::post('/email', [EmailController::class, 'sendEmail'])->name('send.email')->middleware(('auth'));
 
 Route::get('/login', [AuthController::class, 'loginakun'])->name('login');
-Route::get('/register', [AuthController::class, 'registerakun'])->name('register');
-Route::post('/registeruser', [AuthController::class, 'registerprocess'])->name('registeruser');
+Route::get('/register', [AuthController::class, 'registerakun'])->name('register')->middleware(('auth'));
+Route::post('/registeruser', [AuthController::class, 'registerprocess'])->name('registeruser')->middleware(('auth'));
 Route::post('/loginuser', [AuthController::class, 'loginprocess'])->name('loginuser');
-Route::get('/logout', [AuthController::class, 'logoutakun'])->name('logout');
+Route::get('/logout', [AuthController::class, 'logoutakun'])->name('logout')->middleware(('auth'));
+Route::get('/register', [AuthController::class, 'indexaccount'])->name('indexadmin')->middleware(('auth'));
+Route::get('/deleteadm_{id}', [AuthController::class, 'deleteaccount'])->name('deleteadmin')->middleware(('auth'));
+
+
+
 

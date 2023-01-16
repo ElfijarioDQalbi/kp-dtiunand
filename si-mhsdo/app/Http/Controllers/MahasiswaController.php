@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use Throwable;
 use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 use App\Exports\MahasiswaExport;
 use App\Imports\MahasiswaImport;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
-use Illuminate\Support\Facades\Storage;
 use App\Exports\MahasiswaExportSelect;
+use Illuminate\Support\Facades\Storage;
 
 class MahasiswaController extends Controller
 {
@@ -37,7 +39,7 @@ class MahasiswaController extends Controller
         $mhs->when($request->fkltas, function ($query) use ($request) {
             return $query->whereFakultas($request->fkltas);
         });
-        return view('admin.mahasiswa', ['mhs' => $mhs->paginate(5)]);
+        return view('admin.mahasiswa', ['mhs' => $mhs->paginate(10)]);
 
         // $mhs = Mahasiswa::paginate(4);
         // return view('admin.mahasiswa' , compact('mhs'));
@@ -208,5 +210,50 @@ class MahasiswaController extends Controller
         $ids = $request->ids;
         // print_r($ids);
         return (new MahasiswaExportSelect($ids))->download('Mahasiswa1.xlsx');
+    }
+
+    public function dashboard(){
+        $jlhmhs_smstr3 = Mahasiswa::where('semester','3')->count();
+        $jlhmhs_smstr13 = Mahasiswa::where('semester','13')->count();
+        
+        $total_mhsdo_perfakultas = Mahasiswa::select(DB::raw("CAST(COUNT(semester) as int) as jlhmhsdo"))
+        ->GroupBy(DB::raw("(fakultas)"))
+        ->pluck('jlhmhsdo');
+
+        $total_mhsdo_smstr3 = Mahasiswa::select(DB::raw("CAST(COUNT(semester) as int) as jlhmhsdo3"))
+        ->where('semester','3')
+        ->GroupBy(DB::raw("(fakultas)"))
+        ->pluck('jlhmhsdo3');
+
+        $total_mhsdo_smstr13 = Mahasiswa::select(DB::raw("CAST(COUNT(semester) as int) as jlhmhsdo13"))
+        ->where('semester','13')
+        ->GroupBy(DB::raw("(fakultas)"))
+        ->pluck('jlhmhsdo13');
+
+        $fakultas = Mahasiswa::select(DB::raw("(fakultas) as fakultas"))
+        ->GroupBy(DB::raw("(fakultas)"))
+        ->pluck('fakultas');
+
+        $fakultas3 = Mahasiswa::select(DB::raw("(fakultas) as fakultas"))
+        ->where('semester','3')
+        ->GroupBy(DB::raw("(fakultas)"))
+        ->pluck('fakultas');
+
+        $fakultas13 = Mahasiswa::select(DB::raw("(fakultas) as fakultas"))
+        ->where('semester','13')
+        ->GroupBy(DB::raw("(fakultas)"))
+        ->pluck('fakultas');
+
+        return view('admin/beranda', compact(
+            'jlhmhs_smstr3',
+            'jlhmhs_smstr13',
+            'fakultas', 
+            'total_mhsdo_perfakultas', 
+            'total_mhsdo_smstr3', 
+            'total_mhsdo_smstr13',
+            'fakultas3',
+            'fakultas13'
+        ));
+
     }
 }

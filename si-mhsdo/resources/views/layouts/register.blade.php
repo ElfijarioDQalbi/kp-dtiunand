@@ -17,12 +17,22 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
 </head>
 <body class="hold-transition register-page">
+
 <div class="register-box">
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a class="h4"><b>Sistem Informasi Peringatan Dini Drop Out Mahasiswa tingkat Sarjana</b></a>
+      <a class="h4"><b>Sistem Informasi Peringatan Dini Drop Out Mahasiswa</b></a>
     </div>
     <div class="card-body">
+      @if ($message = Session::get('gagal-register'))
+      <div class="alert alert-danger" role="alert"><i class="nav-icon fas fa-window-close mr-1"></i>
+          {{ $message }}
+      </div>
+      @elseif ($message = Session::get('success-register'))
+      <div class="alert alert-success" role="alert"><i class="nav-icon fas fa-check-circle mr-1"></i>
+          {{ $message }}
+      </div>
+      @endif
       <p class="login-box-msg">Register a new admin</p>
 
       <form action="/registeruser" method="post">

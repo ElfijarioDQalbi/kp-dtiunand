@@ -102,10 +102,10 @@
             <table class="table table-bordered">
               <thead>
                 <tr>
-                  <th class="text-center"><input type="checkbox" onchange="selectAll(this)"/ ></th>
+                  <th class="text-center"><input type="checkbox" onchange="selectAll(this)" id="chkAll" ></th>
                   <th scope="col" class="text-center">No</th>
                   <th scope="col" class="text-center">Nama Mahasiswa</th>
-                  <th scope="col" class="text-center">NIM</th>
+                  {{-- <th scope="col" class="text-center">NIM</th> --}}
                   <th scope="col" class="text-center">Angkatan</th>
                   <th scope="col" class="text-center">Program Studi</th>
                   <th scope="col" class="text-center">Fakultas</th>
@@ -128,7 +128,7 @@
                   <td class="text-center"><input type="checkbox" class="allmhs" name="ids[{{ $mhsiswa->id }}]" value="{{ $mhsiswa->id }}"></td>
                   <td class="text-center">{{ $index + $mhs->firstItem() }}</td>
                   <td><p>{{ $mhsiswa->nama }}</p></td>
-                  <td><p>{{ $mhsiswa->nim }}</p></td>
+                  {{-- <td><p>{{ $mhsiswa->nim }}</p></td> --}}
                   <td><p>{{ $mhsiswa->angkatan }}</p></td>
                   <td><p>{{ $mhsiswa->prodi }}</p></td>
                   <td><p>{{ $mhsiswa->fakultas }}</p></td>
@@ -151,6 +151,7 @@
               </tbody>
             </table>
             <button id="btn" type="submit" class="btn btn-outline-success mb-3"><i class="nav-icon fas fa-print mr-1"></i>Export Selected</button>
+            {{-- <input type="button" onclick='selects()' value="Select All"/>   --}}
             {{-- <input type="submit" value="exporttable"> --}}
             {{ $mhs->withQueryString()->links() }}
           </div>
@@ -207,6 +208,15 @@
       checkbox.checked= input.checked;
     })
   }
+  // function selects(){  
+  //               var ele=document.getElementsByClassName('allmhs');  
+  //               for(var i=0; i<ele.length; i++){  
+  //                   if(ele[i].type=='checkbox')  
+  //                       ele[i].checked=true;  
+  //                       console.log(ele.length);
+  //               }  
+                
+  //           }  
 
   // //checkbox-export
   // function selectexport(){

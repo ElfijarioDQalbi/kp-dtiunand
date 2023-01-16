@@ -51,7 +51,7 @@ class FormController extends Controller
         $mhs->when($request->fkltas, function ($query) use ($request) {
             return $query->whereFakultas($request->fkltas);
         });
-        return view('admin.pesan', ['mhs' => $mhs->paginate(5)], compact('api'));
+        return view('admin.pesan', ['mhs' => $mhs->paginate(50)], compact('api'));
 
         // if($request){
         //     $mhs = Mahasiswa::where('angkatan', 'LIKE', '%' .$request->search. '%')->get();      

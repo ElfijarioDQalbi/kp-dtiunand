@@ -30,7 +30,7 @@ class EmailController extends Controller
     $mhs->when($request->fkltas, function ($query) use ($request) {
       return $query->whereFakultas($request->fkltas);
     });
-    return view('admin.email', ['mhs' => $mhs->paginate(5)]);
+    return view('admin.email', ['mhs' => $mhs->paginate(50)]);
 
     // $mhs = Mahasiswa::all();
     // return view('/admin/email', compact('mhs'));
