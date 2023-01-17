@@ -57,7 +57,3 @@ Route::post('/loginuser', [AuthController::class, 'loginprocess'])->name('loginu
 Route::get('/logout', [AuthController::class, 'logoutakun'])->name('logout')->middleware(('auth'));
 Route::get('/register', [AuthController::class, 'indexaccount'])->name('indexadmin')->middleware(('auth'));
 Route::get('/deleteadm_{id}', [AuthController::class, 'deleteaccount'])->name('deleteadmin')->middleware(('auth'));
-
-
-
-

@@ -165,10 +165,11 @@
           <div class="alert alert-danger">{{ $message }}</div>
           @enderror
         </div>
-
+        
+        <input type="hidden" name="evaluasi" value="yoi">
+{{-- 
         <div class="form-group">
           <label>Evaluasi</label>
-          <select class="form-control" aria-label="Default select example" name="evaluasi" >
             <option selected disabled>=== Pilih evaluasi mahasiswa ===</option>
             <option value="terancam do">Terancam Drop Out</option>
             <option value="aman">Aman</option>
@@ -177,7 +178,7 @@
           <div class="alert alert-danger">{{ $message }}</div>
           @enderror
         </div>
-        
+         --}}
         <button type="submit" class="btn btn-primary">Submit</button>
       </div>
       <!-- /.card-body -->
