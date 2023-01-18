@@ -112,7 +112,7 @@
               <div class="form-group row">
                 <label class="col-sm-4 col-form-label">Masa Studi</label>
                 <div class="col-sm-8">
-                  <input type="text" name="masa_studi" placeholder="Masukkan Masa Studi..." class="form-control" value="{{ $mhs->masa_studi }}" disabled>
+                  <input type="text" name="masa_studi" placeholder="Masukkan Masa Studi..." class="form-control" value="{{ $mhs->masa_studi }} Tahun" disabled>
                 </div>
               </div>
 

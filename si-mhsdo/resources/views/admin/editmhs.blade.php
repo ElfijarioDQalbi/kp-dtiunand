@@ -96,10 +96,10 @@
               </div>
             </div>
     
-            <div class="form-group">
+            {{-- <div class="form-group">
               <label>Masa Studi</label>
               <input type="text" name="masa_studi" placeholder="Masukkan Masa Studi..." class="form-control" value="{{ $mhs->masa_studi }}">
-            </div>
+            </div> --}}
     
             <div class="form-group">
             <label>Status</label>
@@ -113,14 +113,14 @@
               </div>
             </div>
     
-            <div class="form-group">
+            {{-- <div class="form-group">
               <label>Evaluasi</label>
               <select class="form-control" aria-label="Default select example" name="evaluasi">
                 <option selected disabled>=== Pilih evaluasi mahasiswa ===</option>
                 <option value="terancam do" {{ $mhs->evaluasi == 'terancam do'? 'selected' : '' }}>Terancam Drop Out</option>
                 <option value="aman" {{ $mhs->evaluasi == 'aman'? 'selected' : '' }}>Aman</option>
               </select>
-            </div>
+            </div> --}}
             
             <button type="submit" class="btn btn-primary">Submit</button>
           </div>

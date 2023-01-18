@@ -103,14 +103,21 @@ class MahasiswaController extends Controller
         //     'semester.required' => 'Masukkan Semester Mahasiswa'
         // ]);
 
-        if (($request->ipk <= 2.00) && ($request->semester == 3)) {
+        if (($request->ipk <= 2.00) && ($request->semester == 3) || ($request->total_sks < 40)) {
             $evaluasi = 'Peringatan DO';
-        } else if (($request->ipk <= 2.00) && ($request->semester == 13)) {
+        } else if (($request->ipk <= 2.00) && ($request->semester == 13) || ($request->total_sks < 144)) {
             $evaluasi = 'Terancam DO';
         } else {
-            $evaluasi = 'aman';
+            $evaluasi = 'Aman';
         }
         $request['evaluasi'] = $evaluasi;
+
+        if(($request->semester == 3)){
+            $masastudi = "1.5";
+        } else if (($request->semester == 13)) {
+            $masastudi = "6.5";
+        }
+        $request['masa_studi'] = $masastudi;
 
         Mahasiswa::create($request->all());
         return redirect('/mahasiswa')->with('success-i', 'Data Berhasil Ditambahkan');
@@ -175,7 +182,23 @@ class MahasiswaController extends Controller
         // $mahasiswa->update($request->all());
 
         // return redirect()->route('/admin/mahasiswa')->with('success','Mahasiswa Berhasil di Update');
+
         $mhs = Mahasiswa::findOrfail($id);
+        if (($request->ipk <= 2.00) && ($request->semester == 3) || ($request->total_sks < 40)) {
+            $evaluasi = 'Peringatan DO';
+        } else if (($request->ipk <= 2.00) && ($request->semester == 13) || ($request->total_sks < 144)) {
+            $evaluasi = 'Terancam DO';
+        } else {
+            $evaluasi = 'Aman';
+        }
+        $request['evaluasi'] = $evaluasi;
+
+        if(($request->semester == 3)){
+            $masastudi = "1.5";
+        } else if (($request->semester == 13)) {
+            $masastudi = "6.5";
+        }
+        $request['masa_studi'] = $masastudi;
         $mhs->update($request->all());
         return redirect('/mahasiswa')->with('success-e', 'Data Berhasil Diubah');
     }
