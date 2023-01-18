@@ -103,13 +103,28 @@ class MahasiswaController extends Controller
         //     'semester.required' => 'Masukkan Semester Mahasiswa'
         // ]);
 
-        if (($request->ipk <= 2.00) && ($request->semester == 3) || ($request->total_sks < 40)) {
-            $evaluasi = 'Peringatan DO';
-        } else if (($request->ipk <= 2.00) && ($request->semester == 13) || ($request->total_sks < 144)) {
-            $evaluasi = 'Terancam DO';
-        } else {
-            $evaluasi = 'Aman';
+        if($request->semester == 3){
+            if(($request->ipk <= 2.00) || ($request->total_sks < 40) ){
+                $evaluasi = 'terancam do';
+            }else{
+                $evaluasi = 'aman';
+            }
+        }else if ($request->semester == 13){
+            if(($request->ipk <= 2.00) || ($request->total_sks < 144) ){
+                $evaluasi = 'terancam do';
+            }else{
+                $evaluasi = 'aman';
+            }
+        }else{
+            $evaluasi = 'aman';
         }
+        // if (($request->ipk <= 2.00) && ($request->semester == 3) || ($request->total_sks < 40)) {
+        //     $evaluasi = 'terancam do';
+        // } else if (($request->ipk <= 2.00) && ($request->semester == 13) || ($request->total_sks < 144)) {
+        //     $evaluasi = 'terancam do';
+        // } else {
+        //     $evaluasi = 'aman';
+        // }
         $request['evaluasi'] = $evaluasi;
 
         if(($request->semester == 3)){
@@ -184,13 +199,28 @@ class MahasiswaController extends Controller
         // return redirect()->route('/admin/mahasiswa')->with('success','Mahasiswa Berhasil di Update');
 
         $mhs = Mahasiswa::findOrfail($id);
-        if (($request->ipk <= 2.00) && ($request->semester == 3) || ($request->total_sks < 40)) {
-            $evaluasi = 'Peringatan DO';
-        } else if (($request->ipk <= 2.00) && ($request->semester == 13) || ($request->total_sks < 144)) {
-            $evaluasi = 'Terancam DO';
-        } else {
-            $evaluasi = 'Aman';
+        if($request->semester == 3){
+            if(($request->ipk <= 2.00) || ($request->total_sks < 40) ){
+                $evaluasi = 'terancam do';
+            }else{
+                $evaluasi = 'aman';
+            }
+        }else if ($request->semester == 13){
+            if(($request->ipk <= 2.00) || ($request->total_sks < 144) ){
+                $evaluasi = 'terancam do';
+            }else{
+                $evaluasi = 'aman';
+            }
+        }else{
+            $evaluasi = 'aman';
         }
+        // if (($request->ipk <= 2.00) && ($request->semester == 3) || ($request->total_sks < 40)) {
+        //     $evaluasi = 'terancam do';
+        // } else if (($request->ipk <= 2.00) && ($request->semester == 13) || ($request->total_sks < 144)) {
+        //     $evaluasi = 'terancam do';
+        // } else {
+        //     $evaluasi = 'aman';
+        // }
         $request['evaluasi'] = $evaluasi;
 
         if(($request->semester == 3)){
@@ -227,7 +257,7 @@ class MahasiswaController extends Controller
 
     public function import(Request $request)
     {
-        try {
+        // try {
             $file_excel = $request->file('excel_file');
 
             $nama_file = $file_excel->getClientOriginalName();
@@ -235,9 +265,9 @@ class MahasiswaController extends Controller
 
             Excel::import(new MahasiswaImport, public_path('/MahasiswaData/' . $nama_file));
             return redirect('/mahasiswa')->with('success-i', 'Data Berhasil Ditambahkan');
-        } catch (Throwable $e) {
-            return redirect('/mahasiswa')->with('success-d', 'data yang dimasukkan salah, harap perhatikan kembali file yang telah diupload');
-        }
+        // } catch (Throwable $e) {
+        //     return redirect('/mahasiswa')->with('success-d', 'data yang dimasukkan salah, harap perhatikan kembali file yang telah diupload');
+        // }
     }
 
     public function exportselected(Request $request)

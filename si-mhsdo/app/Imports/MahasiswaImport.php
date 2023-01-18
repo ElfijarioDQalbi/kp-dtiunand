@@ -24,6 +24,27 @@ class MahasiswaImport implements ToModel, WithHeadingRow
 
     public function model(array $row)
     {
+        if($row['semester'] == 3){
+            if(($row['ipk'] <= 2.00) || ($row['total_sks'] < 40) ){
+                $evaluasi = 'terancam do';
+            }else{
+                $evaluasi = 'aman';
+            }
+        }else if ($row['semester'] == 13){
+            if(($row['ipk'] <= 2.00) || ($row['total_sks'] < 144) ){
+                $evaluasi = 'terancam do';
+            }else{
+                $evaluasi = 'aman';
+            }
+        }else{
+            $evaluasi = 'aman';
+        }
+
+        if(($row['semester'] == 3)){
+            $masa_studi = "1.5";
+        } else if (($row['semester'] == 13)) {
+            $masa_studi = "6.5";
+        }
         return new Mahasiswa([
             //
             'nama' => $row['nama'],
@@ -34,13 +55,14 @@ class MahasiswaImport implements ToModel, WithHeadingRow
             'semester' => $row['semester'],
             'ipk' => $row['ipk'],
             'total_sks' => $row['total_sks'],
-            'masa_studi' => $row['masa_studi'],
+            'masa_studi' => $masa_studi,
             'hp_ortu' => $row['hp_ortu'],
             'hp_mahasiswa' => $row['hp_mahasiswa'],
             'email' => $row['email'],
             'status' => $row['status'],
-            'evaluasi' => $row['evaluasi'],
+            'evaluasi' => $evaluasi,
         ]);
-        // dd($row);
+
+        //dd($row);
     }
 }
