@@ -70,8 +70,16 @@
               <option value=""selected>============ Pilih Fakultas ============</option>
             </select>
           </div>
+          <div class="col-auto">
+            <label class="col-form-label ml-2">Status Evaluasi :</label>
+            <select class="form-control" name="eval">
+              <option value="terancam do" selected="{{ isset($_GET['evaluasi']) && $_GET['evaluasi'] == 'terancam do' }}">Terancam Drop Out</option>
+              <option value="aman" selected="{{ isset($_GET['evaluasi']) && $_GET['evaluasi'] == 'aman' }}">Aman</option>
+              <option value=""selected>===== Pilih Status Evaluasi =====</option>
+            </select>
+          </div>
           <div class="col-auto mt-3">
-            <button class="btn btn-dark"><i class="nav fas fa-search ml-1"></i>Cari</button>
+            <button class="btn btn-dark"><i class="nav-con fas fa-search"></i> Search</button>
           </div>
       </div>
     </form>
@@ -105,20 +113,25 @@
                   <th class="text-center"><input type="checkbox" onchange="selectAll(this)" id="chkAll" ></th>
                   <th scope="col" class="text-center">No</th>
                   <th scope="col" class="text-center">Nama Mahasiswa</th>
-                  {{-- <th scope="col" class="text-center">NIM</th> --}}
+                  <th scope="col" class="text-center">NIM</th>
                   <th scope="col" class="text-center">Angkatan</th>
                   <th scope="col" class="text-center">Program Studi</th>
                   <th scope="col" class="text-center">Fakultas</th>
                   <th scope="col" class="text-center">Semester</th>
-                  {{-- <th scope="col" class="text-center">IPK</th>
+                  <th scope="col" class="text-center">IPK</th>
                   <th scope="col" class="text-center">Total SKS</th>
-                  <th scope="col" class="text-center">Masa Studi</th>
+                  {{-- <th scope="col" class="text-center">Masa Studi</th>
                   <th scope="col" class="text-center">No.HP OrangTua/Wali</th>
                   <th scope="col" class="text-center">No.HP Mahasiswa</th>
                   <th scope="col" class="text-center">Email Mahasiswa</th>
-                  <th scope="col" class="text-center">Status</th>
-                  <th scope="col" class="text-center">Evaluasi</th> --}}
+                  <th scope="col" class="text-center">Status</th> --}}
+                  <th scope="col" class="text-center">Evaluasi</th>
                   <th scope="col" class="text-center">Action</th>
+                </tr>
+                <tr>
+                  {{-- @if($mhs == null)
+                  <td colspan="12" class="text-center"><i>Data Tidak Ditemukan</i> </td>
+                  @endif --}}
                 </tr>
               </thead>
               <tbody>
@@ -128,23 +141,29 @@
                   <td class="text-center"><input type="checkbox" class="allmhs" name="ids[{{ $mhsiswa->id }}]" value="{{ $mhsiswa->id }}"></td>
                   <td class="text-center">{{ $index + $mhs->firstItem() }}</td>
                   <td><p>{{ $mhsiswa->nama }}</p></td>
-                  {{-- <td><p>{{ $mhsiswa->nim }}</p></td> --}}
+                  <td><p>{{ $mhsiswa->nim }}</p></td>
                   <td><p>{{ $mhsiswa->angkatan }}</p></td>
                   <td><p>{{ $mhsiswa->prodi }}</p></td>
                   <td><p>{{ $mhsiswa->fakultas }}</p></td>
                   <td><p>{{ $mhsiswa->semester }}</p></td>
-                  {{-- <td><p>{{ $mhsiswa->ipk }}</p></td>
+                  <td><p>{{ $mhsiswa->ipk }}</p></td>
                   <td><p>{{ $mhsiswa->total_sks }}</p></td>
-                  <td><p>{{ $mhsiswa->masa_studi}}</p></td>
+                  {{-- <td><p>{{ $mhsiswa->masa_studi}}</p></td>
                   <td><p>{{ $mhsiswa->hp_ortu }}</p></td>
                   <td><p>{{ $mhsiswa->hp_mahasiswa }}</p></td>
                   <td><p>{{ $mhsiswa->email }}</p></td>
-                  <td><p>{{ $mhsiswa->status }}</p></td>
-                  <td><p>{{ $mhsiswa->evaluasi }}</p></td> --}}
+                  <td><p>{{ $mhsiswa->status }}</p></td> --}}
+                  <td><p>{{ $mhsiswa->evaluasi }}</p></td>
                   <td class="text-center">
-                    <a href="/detailmhs_{{ $mhsiswa->id }}" class="btn btn-outline-info btn-xs"><i class="nav-icon fas fa-eye"></i></a>
-                    <a href="/editmhs_{{ $mhsiswa->id }}" class="btn btn-outline-warning btn-xs"><i class="nav-icon fas fa-edit"></i></a>
-                    <a href="/deletemhs_{{ $mhsiswa->id }}" class="btn btn-outline-danger btn-xs"><i class="nav-icon fas fa-trash"></i></a>
+                    <div class="col-auto">
+                      <a href="/detailmhs_{{ $mhsiswa->id }}" class="btn btn-outline-info btn-xs"><i class="nav-icon fas fa-eye"></i></a>        
+                    </div>
+                    <div class="col-auto">                   
+                      <a href="/editmhs_{{ $mhsiswa->id }}" class="btn btn-outline-warning btn-xs"><i class="nav-icon fas fa-edit"></i></a>
+                    </div>
+                    <div class="col-auto">
+                      <a href="/deletemhs_{{ $mhsiswa->id }}" class="btn btn-outline-danger btn-xs"><i class="nav-icon fas fa-trash"></i></a>
+                    </div>
                   </td>
                 </tr>
                 @endforeach

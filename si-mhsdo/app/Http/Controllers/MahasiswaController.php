@@ -39,6 +39,12 @@ class MahasiswaController extends Controller
         $mhs->when($request->fkltas, function ($query) use ($request) {
             return $query->whereFakultas($request->fkltas);
         });
+        //filter status evaluasi
+        $mhs->when($request->eval, function ($query) use ($request) {
+            return $query->whereEvaluasi($request->eval);
+                    
+        });
+                  
         return view('admin.mahasiswa', ['mhs' => $mhs->paginate(10)]);
 
         // $mhs = Mahasiswa::paginate(4);
