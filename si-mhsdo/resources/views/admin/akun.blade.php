@@ -130,7 +130,7 @@
                         <th scope="col" class="text-center">No</th>
                         <th scope="col" class="text-center">Username</th>
                         <th scope="col" class="text-center">Email</th>
-                        <th scope="col" class="text-center">Password</th>
+                        {{-- <th scope="col" class="text-center">Password</th> --}}
                         <th scope="col" class="text-center">Action</th>
                       </tr>
                     </thead>
@@ -142,7 +142,7 @@
                         <td class="text-center">{{ $loop->iteration }}</td>
                         <td><p>{{ $adm->name }}</p></td>
                         <td><p>{{ $adm->email }}</p></td>
-                        <td><p>{{ $adm->password }}</p></td>
+                        {{-- <td><p>{{ $adm->password }}</p></td> --}}
                         <td class="text-center">
                           {{-- <a href="/editmhs_{{ $mhsiswa->id }}" class="btn btn-outline-warning btn-xs"><i class="nav-icon fas fa-edit"></i></a> --}}
                           <a href="/deleteadm_{{ $adm->id }}" class="btn btn-outline-danger btn-xs"><i class="nav-icon fas fa-trash"></i></a>

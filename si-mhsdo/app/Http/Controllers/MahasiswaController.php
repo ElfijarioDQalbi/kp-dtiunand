@@ -282,34 +282,40 @@ class MahasiswaController extends Controller
 
     public function dashboard()
     {
-        $jlhmhs_smstr3 = Mahasiswa::where('semester', '3')->count();
-        $jlhmhs_smstr13 = Mahasiswa::where('semester', '13')->count();
+        $jlhmhs_smstr3 = Mahasiswa::where('semester', '3')->where('evaluasi','terancam do')->count();
+        $jlhmhs_smstr13 = Mahasiswa::where('semester', '13')->where('evaluasi','terancam do')->count();
 
         $total_mhsdo_perfakultas = Mahasiswa::select(DB::raw("CAST(COUNT(semester) as int) as jlhmhsdo"))
+            ->where('evaluasi','terancam do')
             ->GroupBy(DB::raw("(fakultas)"))
             ->pluck('jlhmhsdo');
 
         $total_mhsdo_smstr3 = Mahasiswa::select(DB::raw("CAST(COUNT(semester) as int) as jlhmhsdo3"))
             ->where('semester', '3')
+            ->where('evaluasi','terancam do')
             ->GroupBy(DB::raw("(fakultas)"))
             ->pluck('jlhmhsdo3');
 
         $total_mhsdo_smstr13 = Mahasiswa::select(DB::raw("CAST(COUNT(semester) as int) as jlhmhsdo13"))
             ->where('semester', '13')
+            ->where('evaluasi','terancam do')
             ->GroupBy(DB::raw("(fakultas)"))
             ->pluck('jlhmhsdo13');
 
         $fakultas = Mahasiswa::select(DB::raw("(fakultas) as fakultas"))
+            ->where('evaluasi','terancam do')
             ->GroupBy(DB::raw("(fakultas)"))
             ->pluck('fakultas');
 
         $fakultas3 = Mahasiswa::select(DB::raw("(fakultas) as fakultas"))
             ->where('semester', '3')
+            ->where('evaluasi','terancam do')
             ->GroupBy(DB::raw("(fakultas)"))
             ->pluck('fakultas');
 
         $fakultas13 = Mahasiswa::select(DB::raw("(fakultas) as fakultas"))
             ->where('semester', '13')
+            ->where('evaluasi','terancam do')
             ->GroupBy(DB::raw("(fakultas)"))
             ->pluck('fakultas');
 

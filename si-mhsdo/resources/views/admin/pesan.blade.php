@@ -94,8 +94,16 @@
               <option value=""selected>============ Pilih Fakultas ============</option>
             </select>
           </div>
+          <div class="col-auto">
+            <label class="col-form-label ml-2">Status Evaluasi :</label>
+            <select class="form-control" name="eval">
+              <option value="terancam do" selected="{{ isset($_GET['evaluasi']) && $_GET['evaluasi'] == 'terancam do' }}">Terancam Drop Out</option>
+              <option value="aman" selected="{{ isset($_GET['evaluasi']) && $_GET['evaluasi'] == 'aman' }}">Aman</option>
+              <option value=""selected>===== Pilih Status Evaluasi =====</option>
+            </select>
+          </div>
           <div class="col-auto mt-3">
-            <button class="btn btn-dark"><i class="nav fas fa-search ml-1"></i>Cari</button>
+            <button class="btn btn-dark"><i class="nav-con fas fa-search"></i> Search</button>
           </div>
       </div>
     </form>
@@ -129,19 +137,33 @@
                   <th scope="col" class="text-center">Nama Mahasiswa</th>
                   <th scope="col" class="text-center">Program Studi</th>
                   <th scope="col" class="text-center">Nomor WhatsApp</th>
+                  <th scope="col" class="text-center">Evaluasi</th>
                 </tr>
               </thead>        
               <tbody>
                 {{-- <div {{ $i = 1 }}> </div> --}}
-                @foreach ($mhs as $index => $mhsiswa)
+                @if(count($mhs) > 0)
+                  @foreach ($mhs as $index => $mhsiswa)
+                  <tr>
+                    <td class="text-center"><input type="checkbox" class="allmhs" name="ids[{{ $mhsiswa->id }}]" value="{{ $mhsiswa->id }}"></td>
+                    <td class="text-center">{{ $index + $mhs->firstItem() }}</td>
+                    <td><p>{{ $mhsiswa->nama }}</p></td>
+                    <td><p>{{ $mhsiswa->prodi }}</p></td>
+                    <td><p>{{ $mhsiswa->hp_mahasiswa }}</p></td>
+                    <td class="text-center">
+                      @if(($mhsiswa->evaluasi == 'aman'))
+                        <span class="badge badge-success">Aman</span>
+                      @else
+                        <span class="badge badge-danger">Terancam DO</span>
+                      @endif
+                    </td>
+                  </tr>
+                  @endforeach
+                @else
                 <tr>
-                  <td class="text-center"><input type="checkbox" class="allmhs" name="ids[{{ $mhsiswa->id }}]" value="{{ $mhsiswa->id }}"></td>
-                  <td class="text-center">{{ $index + $mhs->firstItem() }}</td>
-                  <td><p>{{ $mhsiswa->nama }}</p></td>
-                  <td><p>{{ $mhsiswa->prodi }}</p></td>
-                  <td><p>{{ $mhsiswa->hp_mahasiswa }}</p></td>
+                  <td colspan="6" class="text-center"><b><i>Data Tidak Ditemukan</i></b></td>
                 </tr>
-                @endforeach
+                @endif
               </tbody>     
             </table>
             {{ $mhs->withQueryString()->links() }}

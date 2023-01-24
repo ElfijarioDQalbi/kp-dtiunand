@@ -136,40 +136,53 @@
               </thead>
               <tbody>
                 {{-- <div {{ $i = 1 }}> </div> --}}
-                @foreach ($mhs as $index => $mhsiswa)
+                @if(count($mhs) > 0)
+                  @foreach ($mhs as $index => $mhsiswa)
+                  <tr>
+                    <td class="text-center"><input type="checkbox" class="allmhs" name="ids[{{ $mhsiswa->id }}]" value="{{ $mhsiswa->id }}"></td>
+                    <td class="text-center">{{ $index + $mhs->firstItem() }}</td>
+                    <td><p>{{ $mhsiswa->nama }}</p></td>
+                    <td><p>{{ $mhsiswa->nim }}</p></td>
+                    <td><p>{{ $mhsiswa->angkatan }}</p></td>
+                    <td><p>{{ $mhsiswa->prodi }}</p></td>
+                    <td><p>{{ $mhsiswa->fakultas }}</p></td>
+                    <td><p>{{ $mhsiswa->semester }}</p></td>
+                    <td><p>{{ $mhsiswa->ipk }}</p></td>
+                    <td><p>{{ $mhsiswa->total_sks }}</p></td>
+                    {{-- <td><p>{{ $mhsiswa->masa_studi}}</p></td>
+                    <td><p>{{ $mhsiswa->hp_ortu }}</p></td>
+                    <td><p>{{ $mhsiswa->hp_mahasiswa }}</p></td>
+                    <td><p>{{ $mhsiswa->email }}</p></td>
+                    <td><p>{{ $mhsiswa->status }}</p></td> --}}
+                    <td class="text-center">
+                      @if(($mhsiswa->evaluasi == 'aman'))
+                        <span class="badge badge-success">Aman</span>
+                      @else
+                        <span class="badge badge-danger">Terancam DO</span>
+                      @endif
+                    </td>
+                    <td class="text-center">
+                      <div class="col-auto">
+                        <a href="/detailmhs_{{ $mhsiswa->id }}" class="btn btn-outline-info btn-xs"><i class="nav-icon fas fa-eye"></i></a>        
+                      </div>
+                      <div class="col-auto">                   
+                        <a href="/editmhs_{{ $mhsiswa->id }}" class="btn btn-outline-warning btn-xs"><i class="nav-icon fas fa-edit"></i></a>
+                      </div>
+                      <div class="col-auto">
+                        <a href="/deletemhs_{{ $mhsiswa->id }}" class="btn btn-outline-danger btn-xs"><i class="nav-icon fas fa-trash"></i></a>
+                      </div>
+                    </td>
+                  </tr>
+                  @endforeach
+                @else
                 <tr>
-                  <td class="text-center"><input type="checkbox" class="allmhs" name="ids[{{ $mhsiswa->id }}]" value="{{ $mhsiswa->id }}"></td>
-                  <td class="text-center">{{ $index + $mhs->firstItem() }}</td>
-                  <td><p>{{ $mhsiswa->nama }}</p></td>
-                  <td><p>{{ $mhsiswa->nim }}</p></td>
-                  <td><p>{{ $mhsiswa->angkatan }}</p></td>
-                  <td><p>{{ $mhsiswa->prodi }}</p></td>
-                  <td><p>{{ $mhsiswa->fakultas }}</p></td>
-                  <td><p>{{ $mhsiswa->semester }}</p></td>
-                  <td><p>{{ $mhsiswa->ipk }}</p></td>
-                  <td><p>{{ $mhsiswa->total_sks }}</p></td>
-                  {{-- <td><p>{{ $mhsiswa->masa_studi}}</p></td>
-                  <td><p>{{ $mhsiswa->hp_ortu }}</p></td>
-                  <td><p>{{ $mhsiswa->hp_mahasiswa }}</p></td>
-                  <td><p>{{ $mhsiswa->email }}</p></td>
-                  <td><p>{{ $mhsiswa->status }}</p></td> --}}
-                  <td><p>{{ $mhsiswa->evaluasi }}</p></td>
-                  <td class="text-center">
-                    <div class="col-auto">
-                      <a href="/detailmhs_{{ $mhsiswa->id }}" class="btn btn-outline-info btn-xs"><i class="nav-icon fas fa-eye"></i></a>        
-                    </div>
-                    <div class="col-auto">                   
-                      <a href="/editmhs_{{ $mhsiswa->id }}" class="btn btn-outline-warning btn-xs"><i class="nav-icon fas fa-edit"></i></a>
-                    </div>
-                    <div class="col-auto">
-                      <a href="/deletemhs_{{ $mhsiswa->id }}" class="btn btn-outline-danger btn-xs"><i class="nav-icon fas fa-trash"></i></a>
-                    </div>
-                  </td>
+                  <td colspan="12" class="text-center"><b><i>Data Tidak Ditemukan</i></b></td>
                 </tr>
-                @endforeach
+                @endif
               </tbody>
             </table>
-            <button id="btn" type="submit" class="btn btn-outline-success mb-3"><i class="nav-icon fas fa-print mr-1"></i>Export Selected</button>
+            <button id="btn1" type="submit" class="btn btn-outline-success mb-3"><i class="nav-icon fas fa-print mr-1"></i>Export Selected</button>
+            {{-- <button id="btn2" type="submit" class="btn btn-outline-danger mb-3"><i class="nav-icon fas fa-trash mr-1"></i>Delete Selected</button> --}}
             {{-- <input type="button" onclick='selects()' value="Select All"/>   --}}
             {{-- <input type="submit" value="exporttable"> --}}
             {{ $mhs->withQueryString()->links() }}
