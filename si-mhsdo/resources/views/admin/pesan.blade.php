@@ -8,7 +8,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Kirim Pesan via WhatsApp</h1>
+          <h1>Kirim Pesan Peringatan via WhatsApp</h1>
         </div>
     </div>
   </section>

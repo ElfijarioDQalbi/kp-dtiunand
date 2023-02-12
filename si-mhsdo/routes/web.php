@@ -20,8 +20,8 @@ use App\Http\Controllers\MahasiswaController;
 
 Route::get('/', [MahasiswaController::class, 'dashboard'])->name('beranda-dashboard')->middleware(('auth'));
 
-// Route::get('/laporan', function () {
-//     return view('admin/laporan');
+// Route::get('/percobaanemail', function () {
+//     return view('email-template');
 // });
 // Route::get('/akun', function () {
 //     return view('admin/akun');

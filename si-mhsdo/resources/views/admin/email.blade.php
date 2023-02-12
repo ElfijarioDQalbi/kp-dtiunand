@@ -7,7 +7,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Kirim Pesan via Email</h1>
+          <h1>Kirim Pesan Peringatan via Email</h1>
         </div>
       </div>
     </div>
@@ -68,7 +68,7 @@
     <p></p>
     <div class="card bg-white mb-3 ">
       <div class="card-header bg-primary">
-        Kirim Peringatan ke Mahasiswa via WhatsApp
+        Kirim Peringatan ke Mahasiswa via Email
       </div>
       <div class="card-body">
         @if(session()->has('message'))
