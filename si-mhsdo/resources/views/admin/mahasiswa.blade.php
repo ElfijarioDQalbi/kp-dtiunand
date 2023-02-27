@@ -120,18 +120,10 @@
                   <th scope="col" class="text-center">Semester</th>
                   <th scope="col" class="text-center">IPK</th>
                   <th scope="col" class="text-center">Total SKS</th>
-                  {{-- <th scope="col" class="text-center">Masa Studi</th>
-                  <th scope="col" class="text-center">No.HP OrangTua/Wali</th>
-                  <th scope="col" class="text-center">No.HP Mahasiswa</th>
-                  <th scope="col" class="text-center">Email Mahasiswa</th>
-                  <th scope="col" class="text-center">Status</th> --}}
                   <th scope="col" class="text-center">Evaluasi</th>
                   <th scope="col" class="text-center">Action</th>
                 </tr>
                 <tr>
-                  {{-- @if($mhs == null)
-                  <td colspan="12" class="text-center"><i>Data Tidak Ditemukan</i> </td>
-                  @endif --}}
                 </tr>
               </thead>
               <tbody>
@@ -149,11 +141,6 @@
                     <td><p>{{ $mhsiswa->semester }}</p></td>
                     <td><p>{{ $mhsiswa->ipk }}</p></td>
                     <td><p>{{ $mhsiswa->total_sks }}</p></td>
-                    {{-- <td><p>{{ $mhsiswa->masa_studi}}</p></td>
-                    <td><p>{{ $mhsiswa->hp_ortu }}</p></td>
-                    <td><p>{{ $mhsiswa->hp_mahasiswa }}</p></td>
-                    <td><p>{{ $mhsiswa->email }}</p></td>
-                    <td><p>{{ $mhsiswa->status }}</p></td> --}}
                     <td class="text-center">
                       @if(($mhsiswa->evaluasi == 'aman'))
                         <span class="badge badge-success">Aman</span>
@@ -182,9 +169,6 @@
               </tbody>
             </table>
             <button id="btn1" type="submit" class="btn btn-outline-success mb-3"><i class="nav-icon fas fa-print mr-1"></i>Export Selected</button>
-            {{-- <button id="btn2" type="submit" class="btn btn-outline-danger mb-3"><i class="nav-icon fas fa-trash mr-1"></i>Delete Selected</button> --}}
-            {{-- <input type="button" onclick='selects()' value="Select All"/>   --}}
-            {{-- <input type="submit" value="exporttable"> --}}
             {{ $mhs->withQueryString()->links() }}
           </div>
         </form>
@@ -240,28 +224,6 @@
       checkbox.checked= input.checked;
     })
   }
-  // function selects(){  
-  //               var ele=document.getElementsByClassName('allmhs');  
-  //               for(var i=0; i<ele.length; i++){  
-  //                   if(ele[i].type=='checkbox')  
-  //                       ele[i].checked=true;  
-  //                       console.log(ele.length);
-  //               }  
-                
-  //           }  
-
-  // //checkbox-export
-  // function selectexport(){
-  //   var check = document.getElementById("check");
-  //   var btn = document.getElementById("btn");
-
-  //   if(check.checked){
-  //     btn.removeAttribute("disabled");
-  //   } else{
-  //     btn.disabled="true";
-  //   } 
-  // }
-
 </script>
 
 @endsection

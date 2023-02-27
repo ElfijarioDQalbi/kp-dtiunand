@@ -49,24 +49,6 @@
       </div>
     </div>
 
-    {{-- <div class="form-group ml-4 mt-2">
-      <label>Total Admin Sistem</label>
-      <div class="form-row">
-        <div class="col-12 col-sm-6 col-md-4">
-          <div class="info-box mb-3">
-            <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-user"></i></span>
-    
-            <div class="info-box-content">
-              <span class="info-box-text">Admin Sistem</span>
-              <span class="info-box-number">xxx</span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-      </div>
-    </div> --}}
-
     <div class="card">
       <div class="card-header bg-secondary">
           <b>Grafik Persebaran Mahasiswa Terancam Drop Out</b>
@@ -122,10 +104,6 @@
         </div>
       </div>
     </div>
-    
-
-    
-
   </section>
   <!-- /.content -->
 </div>
@@ -137,111 +115,6 @@
   //GRAFIK TOTAL KESELURUHAN MAHASISWA TERANCAM DO
   var totalmhs_terancamdo = {!! json_encode($total_mhsdo_perfakultas)!!};
   var fakultas = {!! json_encode($fakultas) !!};
-
-  // //==============
-  // //===BAR CHART==
-  // //==============
-  // Highcharts.chart('grafiktotal', {
-  //     chart: {
-  //         type: 'column'
-  //     },
-  //     title: {
-  //         text: 'Grafik Total Mahasiswa Terancam Drop Out per Fakultas'
-  //     },
-  //     xAxis: {
-  //         categories: fakultas,
-  //         crosshair: true
-  //     },
-  //     yAxis: {
-  //         min: 0,
-  //         title: {
-  //             text: 'Total Mahasiswa'
-  //         }
-  //     },
-  //     tooltip: {
-  //         headerFormat: '<span style="font-size:10px"><b>{point.key}</b></span><table>',
-  //         pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name} : </td>' +
-  //             '<td style="padding:3"><b> {point.y:f} <small>Orang</small></b></td></tr>',
-  //         footerFormat: '</table>',
-  //         shared: true,
-  //         useHTML: true
-  //     },
-  //     plotOptions: {
-  //         column: {
-  //             pointPadding: 0.2,
-  //             borderWidth: 0
-  //         },
-  //     },
-  //     series: [{
-  //         name: 'Jumlah Mahasiswa Terancam DO',
-  //         data: totalmhs_terancamdo
-
-  //     }]
-  // });
-  
-  
-  //==============
-  //===PIE CHART==
-  //==============
-  // Highcharts.chart('grafiktotal',   {
-  //     chart: {
-  //         plotBackgroundColor: null,
-  //         plotBorderWidth: null,
-  //         plotShadow: false,
-  //         type: 'pie'
-  //     },
-  //     title: {
-  //         text: 'Grafik Total Mahasiswa Terancam Drop Out per Fakultas'
-  //     },
-  //     tooltip: {
-  //         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-  //     },
-  //     accessibility: {
-  //         point: {
-  //             valueSuffix: '%'
-  //         }
-  //     },
-  //     plotOptions: {
-  //         pie: {
-  //             allowPointSelect: true,
-  //             cursor: 'pointer',
-  //             dataLabels: {
-  //                 enabled: true,
-  //                 format: '<b>{point.name}</b>: {point.y: f} <small>Orang</small>'
-  //             },
-  //             showInLegend: true
-  //         }
-  //     },
-  //     series: [{
-  //         name: 'Jumlah Mahasiswa Terancam Drop Out',
-  //         colorByPoint: true,
-  //         // data : [
-  //         //   {
-  //         //     for (let i = 0; i < fakultas.length; i++) {
-  //         //       {name = fakultas[i], y = totalmhs_terancamdo[i]}
-                
-  //         //     };
-  //         //   }
-  //         // ]
-  //         data: [
-  //           {name: fakultas[0] , y: totalmhs_terancamdo[0]},
-  //           {name: fakultas[1] , y: totalmhs_terancamdo[1]},
-  //           {name: fakultas[2] , y: totalmhs_terancamdo[2]},
-  //           {name: fakultas[3] , y: totalmhs_terancamdo[3]},
-  //           {name: fakultas[4] , y: totalmhs_terancamdo[4]},
-  //           {name: fakultas[5] , y: totalmhs_terancamdo[5]},
-  //           {name: fakultas[6] , y: totalmhs_terancamdo[6]},
-  //           {name: fakultas[7] , y: totalmhs_terancamdo[7]},
-  //           {name: fakultas[8] , y: totalmhs_terancamdo[8]},
-  //           {name: fakultas[9] , y: totalmhs_terancamdo[9]},
-  //           {name: fakultas[10] , y: totalmhs_terancamdo[10]},
-  //           {name: fakultas[11] , y: totalmhs_terancamdo[11]},
-  //           {name: fakultas[12] , y: totalmhs_terancamdo[12]},
-  //           {name: fakultas[13] , y: totalmhs_terancamdo[13]},
-  //           {name: fakultas[14] , y: totalmhs_terancamdo[14]},
-  //         ]   
-  //     }]
-  // });
 
   //===================
   //===BAR RACE CHART==

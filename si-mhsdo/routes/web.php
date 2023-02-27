@@ -20,16 +20,6 @@ use App\Http\Controllers\MahasiswaController;
 
 Route::get('/', [MahasiswaController::class, 'dashboard'])->name('beranda-dashboard')->middleware(('auth'));
 
-// Route::get('/percobaanemail', function () {
-//     return view('email-template');
-// });
-// Route::get('/akun', function () {
-//     return view('admin/akun');
-// });
-// Route::get('/createadmin', function () {
-//     return view('admin/tambahadmin');
-// });
-
 Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('indexmahasiswa')->middleware(('auth'));
 Route::get('/createmhs', [MahasiswaController::class, 'create'])->name('createmhs')->middleware(('auth'));
 Route::post('/insertmhs', [MahasiswaController::class, 'store'])->name('insertmhs')->middleware(('auth'));

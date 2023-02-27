@@ -70,8 +70,31 @@ class MahasiswaController extends Controller
      */
     public function store(Request $request)
     {
+        if($request->semester == 3){
+            if(($request->ipk <= 2.00) || ($request->total_sks < 40) ){
+                $evaluasi = 'terancam do';
+            }else{
+                $evaluasi = 'aman';
+            }
+        }else if ($request->semester == 13){
+            if(($request->ipk <= 2.00) || ($request->total_sks < 144) ){
+                $evaluasi = 'terancam do';
+            }else{
+                $evaluasi = 'aman';
+            }
+        }else{
+            $evaluasi = 'aman';
+        }
+        $request['evaluasi'] = $evaluasi;
 
-        // $this->validate($request, [
+        if(($request->semester == 3)){
+            $masastudi = "1.5";
+        } else if (($request->semester == 13)) {
+            $masastudi = "6.5";
+        }
+        $request['masa_studi'] = $masastudi;
+
+        // $request->validate([
         //     'nama' => 'required',
         //     'nim' => 'required',
         //     'prodi' => 'required',
@@ -85,54 +108,22 @@ class MahasiswaController extends Controller
         //     'masa_studi' => 'required',
         //     'status' => 'required',
         //     'evaluasi' => 'required',
-        //     'semester' => 'required'
-        // ], [
-        //     'nama.required' => 'Masukkan Nama Mahasiswa',
-        //     'nim.required' => 'Masukkan NIM Mahasiswa ',
-        //     'prodi.required' => 'Masukkan Program Studi ',
-        //     'fakultas.required' => 'Masukkan Fakultas ',
-        //     'angkatan.required' => 'Masukkan Angkatan ',
-        //     'nohp_mhs.required' => 'Masukkan Nomor Mahasiswa',
-        //     'nohp_ortu.required' => 'Masukkan Nomor Orang tua/ Wali',
-        //     'email.required' => 'Masukan email Mahasiswa yang aktif',
-        //     'ipk.required' => 'Masukkan IPK mahasiswa',
-        //     'total_sks.required' => 'Masukkan total SKS Mahasiswa yang telah diambil',
-        //     'masa_studi.required' => 'Masukkan Masa Studi Mahasiswa',
-        //     'status.required' => 'Masukkan Status Mahasiswa',
-        //     'evaluasi.required' => 'Masukkan hasil Evaluasi Mahasiswa ',
-        //     'semester.required' => 'Masukkan Semester Mahasiswa'
+        //     'semester' => 'required',
         // ]);
-
-        if($request->semester == 3){
-            if(($request->ipk <= 2.00) || ($request->total_sks < 40) ){
-                $evaluasi = 'terancam do';
-            }else{
-                $evaluasi = 'aman';
-            }
-        }else if ($request->semester == 13){
-            if(($request->ipk <= 2.00) || ($request->total_sks < 144) ){
-                $evaluasi = 'terancam do';
-            }else{
-                $evaluasi = 'aman';
-            }
-        }else{
-            $evaluasi = 'aman';
-        }
-        // if (($request->ipk <= 2.00) && ($request->semester == 3) || ($request->total_sks < 40)) {
-        //     $evaluasi = 'terancam do';
-        // } else if (($request->ipk <= 2.00) && ($request->semester == 13) || ($request->total_sks < 144)) {
-        //     $evaluasi = 'terancam do';
-        // } else {
-        //     $evaluasi = 'aman';
-        // }
-        $request['evaluasi'] = $evaluasi;
-
-        if(($request->semester == 3)){
-            $masastudi = "1.5";
-        } else if (($request->semester == 13)) {
-            $masastudi = "6.5";
-        }
-        $request['masa_studi'] = $masastudi;
+        $this->validate($request,[
+            'nama' => 'required',
+            'nim' => 'required',
+            'prodi' => 'required',
+            'fakultas' => 'required',
+            'angkatan' => 'required',
+            'hp_mahasiswa' => 'required',
+            'hp_ortu' => 'required',
+            'email' => 'required',
+            'ipk' => 'required',
+            'total_sks' => 'required',
+            'status' => 'required',
+            'semester' => 'required',
+        ]);
 
         Mahasiswa::create($request->all());
         return redirect('/mahasiswa')->with('success-i', 'Data Berhasil Ditambahkan');
@@ -146,9 +137,6 @@ class MahasiswaController extends Controller
      */
     public function show(Mahasiswa $mhs, $id)
     {
-        //
-        // $mahasiswa = Mahasiswa::findOrfail($id);
-        // return view('mhs.show',compact('mahasiswa'));
         $mhs = Mahasiswa::findOrfail($id);
         return view('admin.detailmhs', compact('mhs'));
     }
@@ -161,9 +149,6 @@ class MahasiswaController extends Controller
      */
     public function edit(Mahasiswa $mhs, $id)
     {
-        //
-        // $mahasiswa = Mahasiswa::findOrfail($id);
-        // return view('/mahasiswa/editmhs', compact('mahasiswa'));
         $mhs = Mahasiswa::findOrfail($id);
         return view('admin.editmhs', compact('mhs'));
     }
@@ -177,26 +162,6 @@ class MahasiswaController extends Controller
      */
     public function update(Request $request, Mahasiswa $mhs, $id)
     {
-        //
-        // $request->validate([
-        //     'nama_mhs' => 'required',
-        //     'nim' => 'required',
-        //     'prodi' => 'required',
-        //     'fakultas' => 'required',
-        //     'angkatan' => 'required',
-        //     'nohp_mhs' => 'required',
-        //     'nohp_ortu' => 'required',
-        //     'email' => 'required',
-        //     'ipk' => 'required',
-        //     'total_sks' => 'required',
-        //     'masa_studi' => 'required',
-        //     'status' => 'required',
-        //     'semester' => 'required'
-        // ]);
-
-        // $mahasiswa->update($request->all());
-
-        // return redirect()->route('/admin/mahasiswa')->with('success','Mahasiswa Berhasil di Update');
 
         $mhs = Mahasiswa::findOrfail($id);
         if($request->semester == 3){
@@ -214,13 +179,6 @@ class MahasiswaController extends Controller
         }else{
             $evaluasi = 'aman';
         }
-        // if (($request->ipk <= 2.00) && ($request->semester == 3) || ($request->total_sks < 40)) {
-        //     $evaluasi = 'terancam do';
-        // } else if (($request->ipk <= 2.00) && ($request->semester == 13) || ($request->total_sks < 144)) {
-        //     $evaluasi = 'terancam do';
-        // } else {
-        //     $evaluasi = 'aman';
-        // }
         $request['evaluasi'] = $evaluasi;
 
         if(($request->semester == 3)){
@@ -229,6 +187,22 @@ class MahasiswaController extends Controller
             $masastudi = "6.5";
         }
         $request['masa_studi'] = $masastudi;
+
+        $this->validate($request,[
+            'nama' => 'required',
+            'nim' => 'required',
+            'prodi' => 'required',
+            'fakultas' => 'required',
+            'angkatan' => 'required',
+            'hp_mahasiswa' => 'required',
+            'hp_ortu' => 'required',
+            'email' => 'required',
+            'ipk' => 'required',
+            'total_sks' => 'required',
+            'status' => 'required',
+            'semester' => 'required',
+        ]);
+
         $mhs->update($request->all());
         return redirect('/mahasiswa')->with('success-e', 'Data Berhasil Diubah');
     }
@@ -241,10 +215,6 @@ class MahasiswaController extends Controller
      */
     public function destroy(Mahasiswa $mahasiswa, $id)
     {
-        //
-        // $mahasiswa = Mahasiswa::findOrfail($id);
-        // $mahasiswa->delete();
-        // return redirect()->route('/admin/mahasiswa')->with('success','Data Mahasiswa Berhasil di Hapus');
         $mhs = Mahasiswa::findOrfail($id);
         $mhs->delete();
         return redirect('/mahasiswa')->with('success-d', 'Data Berhasil Dihapuskan');

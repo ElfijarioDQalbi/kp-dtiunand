@@ -136,20 +136,6 @@
 
         <input type="hidden" name="masa_studi" value="yoi">
 
-        {{-- <div class="form-row">
-          <label>Masa Studi</label>
-          <div class="input-group mb-3">
-            <input type="text" name="masa_studi" class="form-control" placeholder="Masukkan Masa Studi... cth: 4" aria-label="Recipient's username" aria-describedby="basic-addon2" >
-            <div class="input-group-append">
-              <span class="input-group-text" id="basic-addon2">Tahun</span>
-            </div>
-          </div>
-          @error('masa_studi')
-            <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-        </div> --}}
-        
-
         <div class="form-group">
         <label>Status</label>
           <div class="form-check ">
@@ -167,17 +153,6 @@
         
         <input type="hidden" name="evaluasi" value="yoi">
 
-        {{-- <div class="form-group">
-          <label>Evaluasi</label>
-          <select class="form-control" aria-label="Default select example" name="evaluasi" >
-            <option selected disabled>=== Pilih evaluasi mahasiswa ===</option>
-            <option value="terancam do">Terancam Drop Out</option>
-            <option value="aman">Aman</option>
-          </select>
-          @error('evaluasi')
-          <div class="alert alert-danger">{{ $message }}</div>
-          @enderror
-        </div> --}}
         
         <button type="submit" class="btn btn-primary">Submit</button>
       </div>
@@ -196,6 +171,4 @@
 
 </div>
 <!-- /.content-wrapper -->
-
-     
 @endsection

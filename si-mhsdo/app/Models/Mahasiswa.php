@@ -26,10 +26,4 @@ class Mahasiswa extends Model
         'evaluasi'];
     public $timestamps = false;
 
-    // public static function getAllMahasiswa(){
-    //     $ids = $request->ids;
-    //     $result = DB::table('mahasiswas')
-    //     -> select('nama', 'nim', 'angkatan', 'prodi', 'fakultas', 'semester', 'ipk', 'total_sks', 'masa_studi', 'hp_ortu', 'hp_mahasiswa', 'email', 'status', 'evaluasi')
-    //     -> get($ids);
-    // }
 }

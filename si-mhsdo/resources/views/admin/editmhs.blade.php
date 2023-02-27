@@ -10,12 +10,6 @@
         <div class="col-sm-6">
           <h1>Edit Data Mahasiswa</h1>
         </div>
-        {{-- <div class="col-sm-6">
-          <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Blank Page</li>
-          </ol>
-        </div> --}}
       </div>
     </div><!-- /.container-fluid -->
   </section>
@@ -35,41 +29,65 @@
             <div div class="form-group">
               <label>Nama</label>
               <input type="text" name="nama" placeholder="Masukkan Nama Lengkap Mahasiswa..." class="form-control" value="{{ $mhs->nama }}">
+              @error('nama')
+              <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
             </div>  
           
             <div class="form-group">
               <label>NIM</label>
               <input type="text" name="nim" placeholder="Masukkan NIM Mahasiswa..." class="form-control" value="{{ $mhs->nim }}">
+              @error('nim')
+              <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
             </div>
     
             <div class="form-group">
               <label>Program Studi</label>
               <input type="text" name="prodi" placeholder="Masukkan Program Studi Mahasiswa..." class="form-control" value="{{ $mhs->prodi }}">
+              @error('prodi')
+              <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
             </div>
     
             <div class="form-group">
               <label>Fakultas</label>
               <input type="text" name="fakultas" placeholder="Masukkan Fakultas Mahasiswa..." class="form-control" value="{{ $mhs->fakultas }}">
+              @error('fakultas')
+              <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
             </div>
     
             <div class="form-group">
               <label>Angkatan</label>
               <input type="text" name="angkatan" placeholder="Masukkan Tahun Angkatan...(cth: 2019)" class="form-control" maxlength="4" value="{{ $mhs->angkatan }}">
+              @error('angkatan')
+              <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
             </div>
     
             <div class="form-group">
               <label>No.Hp Mahasiswa</label>
               <input type="telp" name="hp_mahasiswa" placeholder="Masukkan Nomor HP Mahasiswa...(cth: 08526667777)" class="form-control" value="{{ $mhs->hp_mahasiswa }}">
+              @error('hp_mahasiswa')
+              <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
             </div>
     
             <div class="form-group">
               <label>No.Hp OrangTua/Wali</label>
               <input type="telp" name="hp_ortu" placeholder="Masukkan Nomor HP OrangTua/Wali...(cth: 08526667777)" class="form-control" value="{{ $mhs->hp_ortu }}">
+              @error('hp_ortu')
+              <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
             </div>
     
             <div class="form-group">
               <label>Email</label>
               <input type="email" name="email" placeholder="Masukkan Email Mahasiswa..." class="form-control" value="{{ $mhs->email}}">
+              @error('email')
+              <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
             </div>
     
             <div class="form-row">
@@ -82,6 +100,9 @@
                 <label>Total SKS</label>
                 <input type="text" name="total_sks" placeholder="Masukkan Total SKS Terakhir Mahasiswa..." class="form-control" value="{{ $mhs->total_sks }}">
               </div>
+              @error('ipk')
+              <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
             </div>
             
             <div class="form-group">
@@ -94,12 +115,10 @@
                 <input class="form-check-input" type="radio" name="semester" id="2Semester" value="13"{{ $mhs->semester == '13'? 'checked' : '' }}>
                   <label class="form-check-label" for="inlineRadio2">Semester 13</label>
               </div>
+              @error('semester')
+              <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
             </div>
-    
-            {{-- <div class="form-group">
-              <label>Masa Studi</label>
-              <input type="text" name="masa_studi" placeholder="Masukkan Masa Studi..." class="form-control" value="{{ $mhs->masa_studi }}">
-            </div> --}}
     
             <div class="form-group">
             <label>Status</label>
@@ -111,16 +130,10 @@
                 <input class="form-check-input" type="radio" name="status" id="2Status" value="cuti" {{ $mhs->status == 'cuti'? 'checked' : '' }}>
                   <label class="form-check-label" for="inlineRadio2">Cuti</label>
               </div>
+              @error('status')
+              <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
             </div>
-    
-            {{-- <div class="form-group">
-              <label>Evaluasi</label>
-              <select class="form-control" aria-label="Default select example" name="evaluasi">
-                <option selected disabled>=== Pilih evaluasi mahasiswa ===</option>
-                <option value="terancam do" {{ $mhs->evaluasi == 'terancam do'? 'selected' : '' }}>Terancam Drop Out</option>
-                <option value="aman" {{ $mhs->evaluasi == 'aman'? 'selected' : '' }}>Aman</option>
-              </select>
-            </div> --}}
             
             <button type="submit" class="btn btn-primary">Submit</button>
           </div>
